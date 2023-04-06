@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import '../theme/layout.css';
+
 /* 전체 레이아웃 */
 button {
   cursor: pointer;
@@ -69,6 +70,7 @@ button {
   margin: 10px;
   box-sizing: border-box; /*반응형 추가*/
 }
+
 .user-profile .profile-area {
   display: flex;
   align-items: center;
@@ -92,6 +94,7 @@ button {
   flex-direction: column;
   align-items: center;
 }
+
 .user-profile .profile-area .upload-area {
   min-width: 80px;
   height: auto;
@@ -132,11 +135,14 @@ button {
   background-color: #fff;
   font-weight: bold;
 }
+
 /* GNB */
 .main .main-gnb {
   flex: 3;
   margin: 30px;
+  width: 100%;
 }
+
 .main .main-gnb a,
 li {
   line-height: 35px;
@@ -155,17 +161,20 @@ li {
   font-size: 24px;
   margin-bottom: 30px;
 }
+
 .myprofile-list {
   /* display: flex; */
   align-items: center;
   border-bottom: 2px solid #858585;
   margin-bottom: 30px;
 }
+
 .myprofile-list .list-frm {
   display: flex;
   /* flex-wrap: wrap; */
   margin-bottom: 10px;
 }
+
 /* .myprofile-list .list-frm .list {
   width: 10%;
 } */
@@ -175,27 +184,22 @@ li {
   /* margin: 10px; */
   margin-bottom: 10px;
 }
-.myprofile-list .myprofile-list-text {
-  margin: 20px;
-  /* position: relative; */
-  /* left: 30px; */
-  font-size: 14px;
-}
 img {
   object-fit: contain;
   width: auto;
   height: auto;
 }
 
+.myprofile-list .myprofile-list-text {
+  margin: 20px;
+  /* position: relative;
+  left: 30px; */
+  font-size: 14px;
+}
+
 .myprofile-list .list-frm .list {
   width: 30%;
   margin: inherit;
-}
-/* 사진등록버튼 */
-.myprofile-button {
-  display: flex;
-  align-items: center;
-  margin: auto;
 }
 
 /* 버튼 스타일 */
@@ -212,15 +216,6 @@ img {
   background-color: #fff;
   box-sizing: border-box;
   margin: auto;
-  /*background: #f29a2e;
-   box-sizing: border-box;
-  width: 80px;
-  height: 40px;
-  border: 10px;
-  font-size: 16px;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 5%; */
 }
 
 .myprofile-button .btn-frm:hover {
@@ -230,39 +225,55 @@ img {
 }
 
 /* 수정부분 */
-/* 버튼 css */
-/* .btn-group {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 5px 0;
-  border: 1px solid #e5e5e5;
-  background-color: #ffffff;
-  color: #000000;
-} */
-
-/* 비밀번호 */
-.my-info .my-info-modify .input > label {
-  display: inline-block;
-  min-width: 165px;
-  line-height: 32px;
-}
-
-/* 닉네임 */
-.my-info-txt > ul > li {
-  margin-top: 5px;
-  color: #777777;
-  padding-left: 8px;
-  position: relative;
-  line-height: 1.5;
-  font-size: 14px;
-}
 
 .my-info-txt .input,
 .my-info-txt .btn-group {
   margin: 10px;
 }
 
+input#petname-text {
+  margin-right: 15px;
+}
+
+.list-frm > ul > li {
+  color: #777777;
+  font-size: 14px;
+}
+
+/* 사진등록버튼 */
+.myprofile-button {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+/* 라디오버튼 디자인 */
+.list-frm input[type='radio'] {
+  display: none;
+}
+
+.list-frm input[type='radio'] + label {
+  padding: 3px;
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 90px;
+  border: 1px solid #333;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.list-frm input[type='radio'] + label {
+  background-color: #fff;
+  color: #333;
+}
+
+.list-frm input[type='radio']:checked + label {
+  background-color: #333;
+  color: #fff;
+}
 /* 사진등록 */
 .contents {
   display: flex;
