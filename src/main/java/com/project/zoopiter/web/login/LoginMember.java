@@ -1,4 +1,4 @@
-package com.project.zoopiter.web;
+package com.project.zoopiter.web.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class LoginMember {
   private String userId;
-  private String userEmail;
   private String userNick;
   private String gubun;
 }

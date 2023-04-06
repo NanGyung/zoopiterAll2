@@ -37,19 +37,21 @@
           </h2>
         </div>
         <section class="loginForm">
-          <form action="" method="post">
+          <form action="" method="post" th:method="post" th:object="${loginForm}">
              <ul>
               <li>
                 <label for="id">아이디</label
-                ><input type="text" id="id" maxlength="16" />
+                ><input type="text" id="id" maxlength="16" th:field="*{userId}"/>
                 <p class="err id hidden">* 아이디를 입력해 주세요</p>
+                <span th:errors="*{userId}"></span>
               </li>
               <li>
                 <label for="pw">비밀번호</label
-                ><input type="password" id="pw" maxlength="16" />
+                ><input type="password" id="pw" maxlength="16" th:field="*{userPw}"/>
                 <p class="err pw hidden">* 비밀번호를 입력해 주세요</p>
+                <span th:errors="*{userPw}"></span>
               </li>
-              <button type="button" id="login">로그인</button>
+              <button id="login">로그인</button>
             </ul>
             <br />
           </form>
@@ -147,7 +149,7 @@
         <!-- 다일로그 display 바꾸면 버그생김 반드시 다른 박스로 감싸야함 -->
         <div class="contents">
           <h3>비밀번호 찾기 완료!</h3>
-          <div id="findPw">찾은 비밀번호</div>
+          <div>찾은 비밀번호</div>
           <button type="button" id="loginGo2">로그인 하러가기</button>
         </div>
       </dialog>
