@@ -3,7 +3,6 @@
 /* * {
   outline: 1px solid green;
 } */
-
 button {
   cursor: pointer;
 }
@@ -12,6 +11,7 @@ button {
 .fg-banner {
   background-color: var(--color-background2);
   padding: 20px;
+  box-sizing: border-box; /*반응형 추가*/
 }
 
 .container {
@@ -19,6 +19,7 @@ button {
   flex-direction: row;
   background-color: var(--color-main-background);
   padding: 20px;
+  box-sizing: border-box; /*반응형 추가*/
 }
 
 .container .main-gnb {
@@ -34,18 +35,32 @@ button {
   background-color: var(--color-background);
   border-radius: 20px;
 }
+/*메인 컨텐츠 반응형 */
+@media screen and (768px >= width) {
+  .container {
+    flex-direction: column;
+  }
+  .main-gnb .pc {
+    height: auto;
+  }
+  .container .main-gnb {
+    margin-bottom: 20px;
+  }
+  .container .mypage_content {
+    margin-left: inherit;
+  }
+}
 
 /* 메뉴 조정중*/
 .main-gnb .pc {
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
   margin: 0 10px;
   line-height: 2rem;
 
   /* 레이아웃 조정 - 난경 */
   padding: 10px;
 }
-
 
 .main-gnb .pc > a {
   display: inline-block;
@@ -61,7 +76,7 @@ button {
   justify-content: center;
   position: relative;
   margin: 10px;
-  width: 100%;
+  box-sizing: border-box; /*반응형 추가*/
 }
 .user-profile .profile-area {
   display: flex;
@@ -78,6 +93,7 @@ button {
   box-shadow: 0 3px 20px 0 rgb(0 0 0 / 6%);
   /* 수정-난경 */
   background-color: var(--color-background);
+  box-sizing: border-box; /*반응형 추가*/
 }
 
 .user-profile .profile-area .upload-area2 {
@@ -177,6 +193,8 @@ li {
 }
 img {
   object-fit: contain;
+  width: auto;
+  height: auto;
 }
 
 .myprofile-list .list-frm .list {
@@ -204,4 +222,9 @@ img {
   background: #333;
   color: #fff;
   /* #f26d3d; */
+}
+
+/* 활성화 된 메뉴 강조 */
+.main-gnb #mypagePcGnb li a.on {
+  font-weight: bold;
 }

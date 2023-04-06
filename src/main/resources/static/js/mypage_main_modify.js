@@ -1,3 +1,53 @@
+function modify() {
+  Swal.fire({
+    title: '수정하시겠습니까?',
+    text: '작성하신 정보가 저장됩니다',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#333',
+    cancelButtonColor: '#ffd88f',
+    confirmButtonText: '수정하기',
+    cancelButtonText: '취소하기',
+  }).then(result => {
+    if (result.isConfirmed) {
+      location.replace('./mypage_main.html');
+    }
+  });
+}
+
+function petModify() {
+  Swal.fire({
+    title: '수정페이지로 이동하시겠습니까?',
+    text: '등록한 반려동물정보를 수정하러 이동합니다',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#333',
+    cancelButtonColor: '#ffd88f',
+    confirmButtonText: '수정하기',
+    cancelButtonText: '취소하기',
+  }).then(result => {
+    if (result.isConfirmed) {
+      location.replace('./mypage_pet_modify.html');
+    }
+  });
+}
+// function petAdd() {
+//   Swal.fire({
+//     title: '반려동물정보를 추가 하시겠습니까?',
+//     text: '신규등록하러 이동합니다',
+//     icon: 'warning',
+//     showCancelButton: true,
+//     confirmButtonColor: '#333',
+//     cancelButtonColor: '#ffd88f',
+//     confirmButtonText: '등록하기',
+//     cancelButtonText: '취소하기',
+//   }).then(result => {
+//     if (result.isConfirmed) {
+//       location.replace('./mypage_pet_modify.html');
+//     }
+//   });
+// }
+
 /* 사진업로드 */
 function DropFile(dropAreaId, fileListId) {
   let dropArea = document.getElementById(dropAreaId);
@@ -62,4 +112,4 @@ function DropFile(dropAreaId, fileListId) {
   };
 }
 
-const dropFile = new DropFile('drop-file', 'files');
+const dropFile = new DropFile('dropFile', 'files');

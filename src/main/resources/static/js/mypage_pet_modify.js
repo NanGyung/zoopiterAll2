@@ -63,3 +63,38 @@ function DropFile(dropAreaId, fileListId) {
 }
 
 const dropFile = new DropFile('drop-file', 'files');
+
+/* 등록완료 */
+function modify() {
+  Swal.fire({
+    title: '등록하시겠습니까?',
+    text: '',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#333',
+    cancelButtonColor: '#ffd88f',
+    confirmButtonText: '등록하기',
+    cancelButtonText: '취소하기',
+  }).then(result => {
+    if (result.isConfirmed) {
+      location.replace('./mypage_main.html');
+    }
+  });
+}
+
+function petModify() {
+  Swal.fire({
+    title: '수정완료 하시겠습니까?',
+    text: '작성하신 정보가 저장됩니다',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#333',
+    cancelButtonColor: '#ffd88f',
+    confirmButtonText: '수정하기',
+    cancelButtonText: '취소하기',
+  }).then(result => {
+    if (result.isConfirmed) {
+      location.replace('./mypage_main.html');
+    }
+  });
+}
