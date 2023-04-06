@@ -174,6 +174,9 @@ button {
   color: var(--color-main-point2);
 }
 
+
+
+
 .hd__menu__list1__item .hd__menu__list1__item__submenu {
   display: none;
   width: 100%;
@@ -235,6 +238,11 @@ button {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+/*로그인 | 회원가입 같은줄 모양*/
+.list1-item4 li{
+  display: inline;
 }
 
 .list1-item4 a:hover {
