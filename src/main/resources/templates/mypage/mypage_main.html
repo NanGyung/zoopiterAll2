@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,7 +94,7 @@
               <li><a href="./mypage_main.html">보호자 정보관리</a></li>
             </ul>
             <ul>
-              <li><a href="./mypage_pet_reg.html">반려동물 등록</a></li>
+              <li><a href="./mypage_pet_reg.html" th:href="@{/pet/pet_reg}">반려동물 등록</a></li>
             </ul>
             <ul>
               <li><a href="./mypage_scheduler.html">의료수첩 관리</a></li>

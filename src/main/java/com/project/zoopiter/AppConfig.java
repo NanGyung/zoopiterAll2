@@ -1,4 +1,4 @@
-package com.project.zoopiter.web;
+package com.project.zoopiter;
 
 import com.project.zoopiter.web.interceptor.LoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;

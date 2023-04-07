@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,7 @@
     <meta name="author" content="2팀" />
     <title>my page</title>
     <!--  마이페이지 css -->
-    <link rel="stylesheet" href="../css/mypage_pet_reg.css" />
+    <link rel="stylesheet" href="../css/mypage/mypage_pet_reg.css" />
     <!--  폰트 어썸 : 로고 -->
     <script
       src="https://kit.fontawesome.com/6631aa96e6.js"
@@ -104,7 +104,7 @@
           </div>
         </div>
         <!-- 메인컨텐츠 -->
-        <div class="mypage_content">
+        <div class="mypage_content" th:object="${saveInfo}">
           <div class="myprofile-top">반려동물 등록</div>
           <div class="myprofile-list">
             <ul class="list-frm">
