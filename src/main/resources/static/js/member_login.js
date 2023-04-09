@@ -3,6 +3,15 @@ const $pw = document.getElementById('pw');
 const $errId = document.querySelector('.err.id');
 const $errPw = document.querySelector('.err.pw');
 
+// onsubmit="return validateForm()" true면 submit 가능! false면 submit 이벤트 막음!
+const validateForm = () => {
+    if($id.value && $pw.value && $errId.classList.contains('hidden') && $errPw.classList.contains('hidden')){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 $id.addEventListener('keydown', e => {
     const input = $id.value.trim();
     const lenOfInput = input.length;
@@ -115,6 +124,18 @@ $pw.addEventListener('blur', e => {
         $errPw.classList.add('hidden');
         $pw.value = input;
     }
+});
+
+
+$pw.addEventListener('input', e => {
+  const input = $pw.value;
+  const lenOfInput = input.length;
+  if(!$errPw.classList.contains('hidden')){
+  // 이게 왜 안돼;;
+//    if(!(/[^A-Za-z0-9]/.test(input)) && (8 <= lenOfInput <= 15) ){
+        $errPw.classList.add('hidden');
+//    }
+  }
 });
 
 const $findId = document.getElementById('findId');

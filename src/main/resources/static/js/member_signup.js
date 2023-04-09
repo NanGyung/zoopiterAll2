@@ -1,3 +1,5 @@
+import { ajax } from '/js/ajax.js';
+
 const $nickname = document.getElementById('nickname');
 const $id = document.getElementById('id');
 const $pw = document.getElementById('pw');
@@ -11,6 +13,16 @@ const $errPw = document.querySelector('.err.pw');
 const $errPwCheck = document.querySelector('.err.pwCheck');
 const $errEmail = document.querySelector('.err.email');
 const $errEmailCheck = document.querySelector('.err.emailCheck');
+
+// onsubmit="return validateForm()" true면 submit 가능! false면 submit 이벤트 막음!
+const validateForm = () => {
+    if($id.value && $pw.value && $errId.classList.contains('hidden') && $errPw.classList.contains('hidden')){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 // 닉네임
 $nickname.addEventListener('keydown', e => {
@@ -216,6 +228,31 @@ $pwCheck.addEventListener('keydown', e => {
   return;
 });
 
+//이메일 중복체크
+    const chkEmail = res => {
+      if(res.header.rtcd == '00'){
+        if(res.data){
+          $email.nextElementSibling.textContent='사용중인 아이디 입니다.'
+          $email.focus();
+        }else{
+          $email.nextElementSibling.textContent='사용가능한 아이디 입니다.'
+        }
+      }else if(res.header.rtcd == '01'){
+          $email.nextElementSibling.textContent=`${res.header.rtmsg}`
+          $email.focus();
+      }
+    }
+
+    const chkEmail_h = e =>{
+      const url = `/api/members/email?email=${$email.value}`;
+      ajax.get(url)
+          .then(res=>res.json())
+          .then(chkEmail)         //res=>chkEmail(res)
+          .catch(console.error);   //err=>console.error(err)
+    }
+
+
+
 //이메일
 $email.addEventListener('keydown', e => {
   const input = $email.value;
@@ -240,13 +277,17 @@ $email.addEventListener('keydown', e => {
       $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
       $email.focus();
     } else {
-      $errEmail.classList.add('hidden');
+//      $errEmail.classList.add('hidden');
       $email.value = input;
+      chkEmail_h(e);
       $emailCheck.focus();
     }
     return;
   }
 });
+
+
+
 
 $email.addEventListener('blur', e => {
   const input = $email.value;
@@ -261,11 +302,15 @@ $email.addEventListener('blur', e => {
     $errEmail.classList.remove('hidden');
     $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
   } else {
-    $errEmail.classList.add('hidden');
+//    $errEmail.classList.add('hidden');
+    chkEmail_h(e);
     $email.value = input;
   }
   return;
 });
+
+
+
 
 const $loginBtn = document.getElementById('loginBtn');
 const $loginPopup = document.getElementById('loginPopup');
