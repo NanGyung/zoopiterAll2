@@ -77,6 +77,31 @@ $nickname.addEventListener('blur', e => {
   return;
 });
 
+//아이디 중복체크
+    const chkId = res => {
+      if(res.header.rtcd == '00'){
+        if(res.data){
+          $errId.textContent='사용중인 아이디 입니다.'
+          $Id.focus();
+        }else{
+          $errId.textContent='사용가능한 아이디 입니다.'
+        }
+      }else{
+          $errId.textContent=`${res.header.rtmsg}`
+          $Id.focus();
+      }
+    }
+
+    const chkId_h = () =>{
+      const url = `/api/members/id?id=${$id.value}`;
+      ajax.get(url)
+          .then(res=>res.json())
+          .then(chkId)         //res=>chkEmail(res)
+          .catch(console.error);   //err=>console.error(err)
+    }
+
+
+
 //아이디
 $id.addEventListener('keydown', e => {
   const input = $id.value;
@@ -102,8 +127,9 @@ $id.addEventListener('keydown', e => {
       $id.focus();
       $id.value = '';
     } else {
-      $errId.classList.add('hidden');
+//      $errId.classList.add('hidden');
       // $id.value = input;
+      chkId_h();
       $pw.focus();
     }
     return;
@@ -124,7 +150,8 @@ $id.addEventListener('blur', e => {
     $errId.textContent = '* 아이디을 입력해 주세요.';
     $id.value = '';
   } else {
-    $errId.classList.add('hidden');
+//    $errId.classList.add('hidden');
+    chkId_h();
     // $id.value = input;
   }
   return;
@@ -228,31 +255,6 @@ $pwCheck.addEventListener('keydown', e => {
   return;
 });
 
-//이메일 중복체크
-    const chkEmail = res => {
-      if(res.header.rtcd == '00'){
-        if(res.data){
-          $email.nextElementSibling.textContent='사용중인 아이디 입니다.'
-          $email.focus();
-        }else{
-          $email.nextElementSibling.textContent='사용가능한 아이디 입니다.'
-        }
-      }else if(res.header.rtcd == '01'){
-          $email.nextElementSibling.textContent=`${res.header.rtmsg}`
-          $email.focus();
-      }
-    }
-
-    const chkEmail_h = e =>{
-      const url = `/api/members/email?email=${$email.value}`;
-      ajax.get(url)
-          .then(res=>res.json())
-          .then(chkEmail)         //res=>chkEmail(res)
-          .catch(console.error);   //err=>console.error(err)
-    }
-
-
-
 //이메일
 $email.addEventListener('keydown', e => {
   const input = $email.value;
@@ -277,9 +279,8 @@ $email.addEventListener('keydown', e => {
       $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
       $email.focus();
     } else {
-//      $errEmail.classList.add('hidden');
+      $errEmail.classList.add('hidden');
       $email.value = input;
-      chkEmail_h(e);
       $emailCheck.focus();
     }
     return;
@@ -302,8 +303,7 @@ $email.addEventListener('blur', e => {
     $errEmail.classList.remove('hidden');
     $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
   } else {
-//    $errEmail.classList.add('hidden');
-    chkEmail_h(e);
+    $errEmail.classList.add('hidden');
     $email.value = input;
   }
   return;

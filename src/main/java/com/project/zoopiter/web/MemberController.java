@@ -1,11 +1,9 @@
 package com.project.zoopiter.web;
 
 import com.project.zoopiter.domain.member.svc.MemberSVC;
-import com.project.zoopiter.web.form.JoinForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,15 +17,13 @@ public class MemberController {
 
   //회원가입약관동의
   @GetMapping("/join")
-  public String clauseForm(Model model){
-    model.addAttribute("joinForm",new JoinForm());
+  public String clauseForm(){
     return "member/member_join";
   }
 
   //회원가입 양식
   @GetMapping("/add")
-  public String joinForm1(Model model){
-    model.addAttribute("joinForm",new JoinForm());
+  public String joinForm1(){
     return "member/member_signup";
   }
 
@@ -47,8 +43,7 @@ public class MemberController {
 
   //병원회원 가입 양식
   @GetMapping("/add2")
-  public String joinForm2(Model model){
-    model.addAttribute("joinForm",new JoinForm());
+  public String joinForm2(){
     return "member/member_signup2";
   }
 }

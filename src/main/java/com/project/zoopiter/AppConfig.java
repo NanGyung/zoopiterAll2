@@ -22,7 +22,8 @@ public class AppConfig implements WebMvcConfigurer {
             "/members/join", //약관페이지
             "/css/**",
             "/js/**",
-            "/img/**"
+            "/img/**",
+            "/api/**"
         );  //인터셉터에서 제외되는 url패턴
   }
 }
