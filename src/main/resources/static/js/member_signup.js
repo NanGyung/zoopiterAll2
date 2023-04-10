@@ -14,15 +14,26 @@ const $errPwCheck = document.querySelector('.err.pwCheck');
 const $errEmail = document.querySelector('.err.email');
 const $errEmailCheck = document.querySelector('.err.emailCheck');
 
-// onsubmit="return validateForm()" true면 submit 가능! false면 submit 이벤트 막음!
-const validateForm = () => {
-    if($id.value && $pw.value && $errId.classList.contains('hidden') && $errPw.classList.contains('hidden')){
-        return true;
-    }else{
-        return false;
+//닉네임 중복체크
+    const chkNick = res => {
+      if(res.header.rtcd == '00'){
+        if(res.data){
+          $errNickname.textContent='사용중인 닉네임 입니다.'
+        }else{
+          $errNickname.textContent='사용가능한 닉네임 입니다.'
+        }
+      }else{
+          $errNickname.textContent=`${res.header.rtmsg}`
+      }
     }
-}
 
+    const chkNick_h = () =>{
+      const url = `/api/members/nickname?nickname=${$nickname.value}`;
+      ajax.get(url)
+          .then(res=>res.json())
+          .then(chkNick)         //res=>chkEmail(res)
+          .catch(console.error);   //err=>console.error(err)
+    }
 
 // 닉네임
 $nickname.addEventListener('keydown', e => {
@@ -49,7 +60,8 @@ $nickname.addEventListener('keydown', e => {
       $nickname.focus();
       $nickname.value = '';
     } else {
-      $errNickname.classList.add('hidden');
+//      $errNickname.classList.add('hidden');
+      chkNick_h();
       // $nickname.value = input;
       $id.focus();
     }
@@ -71,7 +83,8 @@ $nickname.addEventListener('blur', e => {
     $errNickname.textContent = '* 닉네임을 입력해 주세요.';
     $nickname.value = '';
   } else {
-    $errNickname.classList.add('hidden');
+//    $errNickname.classList.add('hidden');
+    chkNick_h();
     // $nickname.value = input;
   }
   return;
@@ -82,13 +95,11 @@ $nickname.addEventListener('blur', e => {
       if(res.header.rtcd == '00'){
         if(res.data){
           $errId.textContent='사용중인 아이디 입니다.'
-          $Id.focus();
         }else{
           $errId.textContent='사용가능한 아이디 입니다.'
         }
       }else{
           $errId.textContent=`${res.header.rtmsg}`
-          $Id.focus();
       }
     }
 
@@ -255,6 +266,28 @@ $pwCheck.addEventListener('keydown', e => {
   return;
 });
 
+//이메일 중복체크
+    const chkEmail = res => {
+      if(res.header.rtcd == '00'){
+        if(res.data){
+          $errEmail.textContent='사용중인 이메일 입니다.'
+        }else{
+          $errEmail.textContent='사용가능한 이메일 입니다.'
+        }
+      }else{
+          $errEmail.textContent=`${res.header.rtmsg}`
+      }
+    }
+
+    const chkEmail_h = () =>{
+      const url = `/api/members/email?email=${email.value}`;
+      ajax.get(url)
+          .then(res=>res.json())
+          .then(chkEmail)         //res=>chkEmail(res)
+          .catch(console.error);   //err=>console.error(err)
+    }
+
+
 //이메일
 $email.addEventListener('keydown', e => {
   const input = $email.value;
@@ -279,8 +312,9 @@ $email.addEventListener('keydown', e => {
       $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
       $email.focus();
     } else {
-      $errEmail.classList.add('hidden');
-      $email.value = input;
+//      $errEmail.classList.add('hidden');
+//      $email.value = input;
+        chkEmail_h();
       $emailCheck.focus();
     }
     return;
@@ -303,8 +337,9 @@ $email.addEventListener('blur', e => {
     $errEmail.classList.remove('hidden');
     $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
   } else {
-    $errEmail.classList.add('hidden');
-    $email.value = input;
+//    $errEmail.classList.add('hidden');
+//    $email.value = input;
+        chkEmail_h();
   }
   return;
 });

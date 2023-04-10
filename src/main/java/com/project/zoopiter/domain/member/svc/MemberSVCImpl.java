@@ -99,6 +99,15 @@ public class MemberSVCImpl implements MemberSVC {
   }
 
   /**
+   * @param userNick 닉네임
+   * @return
+   */
+  @Override
+  public boolean isExistNick(String userNick) {
+    return memberDAO.isExistNick(userNick);
+  }
+
+  /**
    * 로그인
    *
    * @param userId 아이디

@@ -138,8 +138,27 @@ public class MemberDAOImplTest {
     Assertions.assertThat(exist).isFalse();
   }
 
+  @Test
+  @Order(11)
+  @DisplayName("닉네임유무1")
+  void isExistNick(){
+    String userNick = "별칭1";
+    boolean exist = memberDAO.isExistNick(userNick);
+    Assertions.assertThat(exist).isTrue();
+  }
+
+  @Test
+  @Order(12)
+  @DisplayName("닉네임유무2")
+  void isExistNick2(){
+    String userNick = "asdasd";
+    boolean exist = memberDAO.isExistNick(userNick);
+    Assertions.assertThat(exist).isFalse();
+  }
+
+
     @Test
-    @Order(11)
+    @Order(13)
     @DisplayName("로그인")
     void login(){
       String userId="test1";
@@ -156,7 +175,7 @@ public class MemberDAOImplTest {
     }
 
   @Test
-  @Order(12)
+  @Order(14)
   @DisplayName("이메일로 아이디 찾기")
   void findIdByEmail(){
     String userEmail="test1@gamil.com";
@@ -170,5 +189,6 @@ public class MemberDAOImplTest {
     member = memberDAO.findIdByEmail("asd");
     Assertions.assertThat(member.isPresent()).isFalse();
   }
+
 
   }

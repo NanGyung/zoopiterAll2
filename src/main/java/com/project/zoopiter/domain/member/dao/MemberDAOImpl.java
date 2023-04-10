@@ -118,6 +118,7 @@ public class MemberDAOImpl implements MemberDAO {
     }
   }
 
+
   /**
    * 전체 조회
    *
@@ -177,6 +178,22 @@ public class MemberDAOImpl implements MemberDAO {
     String sql = "select count(USER_ID) from member where USER_ID = :userId ";
 
     Map<String, String> param = Map.of("userId", userId);
+
+    Integer cnt = template.queryForObject(sql, param, Integer.class);
+
+    return cnt == 1 ? true : false;
+  }
+
+  /**
+   * @param userNick 닉네임
+   * @return
+   */
+  @Override
+  public boolean isExistNick(String userNick) {
+    boolean flag = false;
+    String sql = "select count(USER_NICK) from member where USER_NICK = :userNick ";
+
+    Map<String, String> param = Map.of("userNick", userNick);
 
     Integer cnt = template.queryForObject(sql, param, Integer.class);
 
