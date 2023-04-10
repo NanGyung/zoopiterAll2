@@ -521,7 +521,7 @@ CREATE TABLE BBSC(
   BC_ATTACH          BLOB,                --첨부파일
   BC_HIT             NUMBER  default 0,   --조회수
   BC_LIKE            NUMBER  default 0,   --좋아요수
-  BC_PUBLIC          CHAR(1) default 'N', --게시글 공개여부(공개: Y, 비공개: N)
+  BC_PUBLIC          CHAR(1) default 'Y', --게시글 공개여부(공개: Y, 비공개: N)
   BC_GUBUN           VARCHAR2(15) default 'B0102',      --게시판 구분(병원후기: B0101, 커뮤니티: B0102)
   USER_NICK          varchar2(30),        --일반회원 닉네임
   BC_CDATE           timestamp default systimestamp,   --작성일
