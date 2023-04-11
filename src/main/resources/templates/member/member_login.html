@@ -43,13 +43,13 @@
                 <label for="id">아이디</label
                 ><input type="text" id="id" maxlength="16" th:field="*{userId}"/>
                 <p class="err id hidden">* 아이디를 입력해 주세요</p>
-                <span th:errors="*{userId}"></span>
+                <span class="err span" th:errors="*{userId}"></span>
               </li>
               <li>
                 <label for="pw">비밀번호</label
                 ><input type="password" id="pw" maxlength="16" th:field="*{userPw}"/>
                 <p class="err pw hidden">* 비밀번호를 입력해 주세요</p>
-                <span th:errors="*{userPw}"></span>
+                <span class="err span" th:errors="*{userPw}"></span>
               </li>
               <button id="login">로그인</button>
             </ul>

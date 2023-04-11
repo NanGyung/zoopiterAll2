@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: calc(122.4vh - 220px);
+  /* height: max-content; */
   min-height: 500px;
   background-color: var(--color-background);
   padding: 30px;
@@ -41,6 +41,11 @@
 
 .hd, .fg-banner, .container, .ft{
   grid-area: mn;
+}
+
+/* 약관동의 메인 컨텐츠 감싸는 영역 */
+.contents-wrap{
+  height: 100%;
 }
 
 /* 약관동의 member_join */
@@ -52,9 +57,18 @@
   opacity: .5;
 }
 
+/* 회원가입 양식 기본 안내문구 */
+.information {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: .5;
+}
+
 
 /* member_signup 회원가입양식, member_login 로그인 공통 레이아웃 */
 main section {
+    grid-area: mn;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -251,7 +265,7 @@ dialog li {
 
 /* 아이디 찾기 버튼 */
 #checkId{
-  width: 100%; 
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--color-main-point);
   background-color: var(--color-main-point);
@@ -385,7 +399,8 @@ dialog li {
 
 #mainTitle{
   display: flex;
-  margin: 1.2rem 0;
+  justify-content: center;
+  margin: 2rem 0;
 }
 #mainTitle i{
   color: var(--color-main-point2);
@@ -394,8 +409,14 @@ dialog li {
 
 .joinbox{
   display: flex;
-  margin-top: 1.6rem;
+  margin: 4rem 0;
   background-color: var(--color-background);
+}
+
+/* 펫오너 가입, 펫병원 가입 버튼 클릭영역 */
+.joinbox a{
+  display: inline-block;
+  width: 100%;
 }
 
 .scroll-boxs {
@@ -404,7 +425,7 @@ dialog li {
 }
 
 .scroll-box{
-    height: 28rem; 
+    height: 28rem;
     width: 22rem;
     padding: 1.2em;
     overflow: auto;
@@ -416,7 +437,7 @@ dialog li {
 
 .scroll-boxs.box2{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .box2__info1{
   margin-right: 10rem;
