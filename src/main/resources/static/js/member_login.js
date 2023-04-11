@@ -126,17 +126,14 @@ $pw.addEventListener('blur', e => {
     }
 });
 
-
+$id.addEventListener('input', e => {
+        const $err = document.querySelector('.err.span');
+        $err.classList.add('hidden');
+    });
 $pw.addEventListener('input', e => {
-  const input = $pw.value;
-  const lenOfInput = input.length;
-  if(!$errPw.classList.contains('hidden')){
-  // 이게 왜 안돼;;
-//    if(!(/[^A-Za-z0-9]/.test(input)) && (8 <= lenOfInput <= 15) ){
-        $errPw.classList.add('hidden');
-//    }
-  }
-});
+        const $err = document.querySelector('.err.span');
+        $err.classList.add('hidden');
+    });
 
 const $findId = document.getElementById('findId');
 const $checkId = document.getElementById('checkId');

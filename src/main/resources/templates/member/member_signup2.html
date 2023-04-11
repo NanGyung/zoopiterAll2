@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     ></script>
     <!--  회원가입 css -->
-    <link rel="stylesheet" href="../css/member.css" />
+    <link rel="stylesheet" href="/css/member.css" />
     <title>병원회원가입</title>
   </head>
 
@@ -81,10 +81,29 @@
                     <label for="businessNum">사업자번호</label
                     ><input type="number" id="businessNum" />
                   </div>
-                  <button class="businessBtn" id="businessBtn">확인</button>
+                  <button class="businessBtn" id="businessBtn" type="button">확인</button>
                 </div>
                 <p class="information business">
                   사업자검증을 위해 필수 입력입니다.
+                </p>
+                <div class="item7__business hidden">
+                  <div class="business__left">
+                    <label for="start_dt">개업일자</label><input type="text" id="start_dt">
+                  </div>
+                </div>
+                <div class="item7__business hidden">
+                  <div class="business__left">
+                    <label for="p_nm">대표자명</label><input type="text" id="p_nm">
+                  </div>
+                </div>
+                <div class="item7__business hidden">
+                  <div class="business__left">
+                    <label for="p_nm">상호명</label><input type="text" id="b_nm">
+                  </div>
+                  <button class="businessBtn" id="businessBtn2" type="button">확인</button>
+                </div>
+                <p class="information business2 hidden">
+                  필수 입력입니다. 상호명으로 커뮤니티 활동이 진행됩니다.
                 </p>
               </li>
             </ul>
@@ -99,7 +118,7 @@
           <img src="../img/img_signup.svg" alt="signupSuccessImg" />
           <p>슬기로운 반려생활과 함께 추억을 쌓아봐요!</p>
           <button type="button" id="loginGo">
-            <a href="./member_login.html" onclick="location"
+            <a href="/login"
               >로그인 하러 가기</a
             >
           </button>

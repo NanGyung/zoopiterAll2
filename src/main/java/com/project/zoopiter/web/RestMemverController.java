@@ -67,4 +67,16 @@ public class RestMemverController {
 
         return res;
     }
+
+    @ResponseBody
+    @PostMapping("/signup2")
+    public RestResponse<Object> signupSave2(@RequestBody Member member){
+        RestResponse<Object> res = null;
+
+        //회원기입
+        Member member2 = memberSVC.save2(member);
+        res = RestResponse.createRestResponse("00","성공",member2);
+
+        return res;
+    }
 }

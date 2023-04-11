@@ -8,14 +8,17 @@
   grid-template-columns: 3fr minmax(320px, 1024px) 3fr;
   grid-template-rows: max-content;
   grid-template-areas:
-      'l mn r'
-      'l mn r'
-      'l mn r'
-      'l mn r';
+    'l mn r'
+    'l mn r'
+    'l mn r'
+    'l mn r';
   color: var(--color-main-text);
 }
 
-.mn-l, .hd-l, .fg-l, .ft-l {
+.mn-l,
+.hd-l,
+.fg-l,
+.ft-l {
   grid-area: l;
   background-color: var(--color-main-background);
 }
@@ -39,12 +42,15 @@
   padding: 30px;
 }
 
-.hd, .fg-banner, .container, .ft{
+.hd,
+.fg-banner,
+.container,
+.ft {
   grid-area: mn;
 }
 
 /* 약관동의 메인 컨텐츠 감싸는 영역 */
-.contents-wrap{
+.contents-wrap {
   height: 100%;
 }
 
@@ -54,7 +60,7 @@
 }
 
 #mainTitle a:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 /* 회원가입 양식 기본 안내문구 */
@@ -62,13 +68,12 @@
   margin: 4px 0;
   font-size: 0.8rem;
   font-weight: bold;
-  opacity: .5;
+  opacity: 0.5;
 }
-
 
 /* member_signup 회원가입양식, member_login 로그인 공통 레이아웃 */
 main section {
-    grid-area: mn;
+  grid-area: mn;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -81,7 +86,7 @@ main section form {
   padding: 32px;
 }
 
-main section form li{
+main section form li {
   margin: 20px 0;
 }
 
@@ -98,7 +103,7 @@ main form input {
 
 /* 회원가입 양식 member_signup */
 /* 일반 회원가입 컨텐츠 영역 */
-.container.signup-container{
+.container.signup-container {
   height: 100%;
 }
 
@@ -107,13 +112,13 @@ main form input {
   height: 100%;
 }
 
-.joinForm form{
+.joinForm form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#loginBtn{
+#loginBtn {
   width: 100%;
   height: 2.4rem;
   border-radius: 1.2rem;
@@ -153,12 +158,12 @@ main form input {
   font-weight: bold;
 }
 /* 회원가입 버튼 클릭영역 */
-#signupBtn a{
+#signupBtn a {
   display: inline-block;
   width: 100%;
 }
 
-.loginForm form{
+.loginForm form {
   width: 280px;
   padding: 0;
   margin-top: 20px;
@@ -181,14 +186,13 @@ input:focus {
   outline: none;
 }
 
-
 /* 아이디 찾기, 비밀번호찾기 영역 */
 .findUser__menu {
   display: flex;
   width: 100%;
   height: 50px;
   background-color: inherit;
-}   
+}
 
 .findUser__menu--ul {
   display: flex;
@@ -260,7 +264,7 @@ dialog li {
 }
 
 /* 아이디 찾기 팝업 */
-#findPopup{
+#findPopup {
   width: 400px;
 }
 
@@ -276,11 +280,11 @@ dialog li {
 }
 
 /* 아이디찾기 안내문구 */
-#findIdPopup .contents p{
+#findIdPopup .contents p {
   margin-bottom: 20px;
 }
 
-#findIdPopup .contents ul li{
+#findIdPopup .contents ul li {
   margin-bottom: 20px;
 }
 
@@ -296,8 +300,8 @@ dialog li {
 }
 
 /* 아이디 찾기 버튼 */
-#checkId{
-  width: 100%; 
+#checkId {
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--color-main-point);
   background-color: var(--color-main-point);
@@ -312,19 +316,19 @@ dialog li {
   border-radius: 20px;
 }
 
-#findIdPopup2 .contents{
+#findIdPopup2 .contents {
   display: flex;
   flex-direction: column;
   padding: 20px;
 }
 
 /* 아이디찾기완료 타이틀 */
-#findIdPopup2 .contents h3{
+#findIdPopup2 .contents h3 {
   line-height: 3rem;
 }
 
 /* 아이디 찾기 팝업 : 비밀번호 찾기 버튼 */
-#checkPw{
+#checkPw {
   width: 300px;
   padding: 10px;
   align-self: center;
@@ -351,7 +355,7 @@ dialog li {
 }
 
 /* 비밀번호 찾기 입력 영역 */
-#findPwPopup .contents form ul{
+#findPwPopup .contents form ul {
   margin-top: 20px;
 }
 
@@ -359,12 +363,12 @@ dialog li {
   margin-bottom: 10px;
 }
 
-#findPwPopup .contents p{
+#findPwPopup .contents p {
   margin-bottom: 20px;
 }
 
 /* 비밀번호 찾기 이메일 인증 버튼 */
-#findPwIdBtn{
+#findPwIdBtn {
   margin-left: 10px;
   width: 150px;
   padding: 8px;
@@ -389,7 +393,7 @@ dialog li {
 }
 
 /* 비밀번호 찾기: 확인 버튼 */
-#checkPassword{
+#checkPassword {
   width: 100%;
   padding: 10px;
   border: 2px solid var(--color-main-point);
@@ -406,16 +410,16 @@ dialog li {
   border-radius: 20px;
 }
 
-#findPwPopup2 .contents{
+#findPwPopup2 .contents {
   padding: 20px;
 }
 
-#findPwPopup2 .contents h3{
+#findPwPopup2 .contents h3 {
   margin-bottom: 20px;
 }
 
 /* 비밀번호 찾기 완료 팝업: 로그인버튼 */
-#loginGo2{
+#loginGo2 {
   width: 100%;
   height: 40px;
   margin-top: 2rem;
@@ -429,24 +433,24 @@ dialog li {
 
 /* member_join */
 
-#mainTitle{
+#mainTitle {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
 }
-#mainTitle i{
+#mainTitle i {
   color: var(--color-main-point2);
   margin-right: 10px;
 }
 
-.joinbox{
+.joinbox {
   display: flex;
   margin: 4rem 0;
   background-color: var(--color-background);
 }
 
 /* 펫오너 가입, 펫병원 가입 버튼 클릭영역 */
-.joinbox a{
+.joinbox a {
   display: inline-block;
   width: 100%;
 }
@@ -456,35 +460,35 @@ dialog li {
   margin: 1.2rem 0;
 }
 
-.scroll-box{
-    height: 28rem; 
-    width: 22rem;
-    padding: 1.2em;
-    overflow: auto;
-    border: 1px solid var(--color-grey1);
+.scroll-box {
+  height: 28rem;
+  width: 22rem;
+  padding: 1.2em;
+  overflow: auto;
+  border: 1px solid var(--color-grey1);
 }
-.scroll-box1{
+.scroll-box1 {
   margin-right: 20px;
 }
 
-.scroll-boxs.box2{
+.scroll-boxs.box2 {
   display: flex;
   justify-content: center;
 }
-.box2__info1{
+.box2__info1 {
   margin-right: 10rem;
 }
 .box2__info2 {
   margin-right: 10px;
 }
 
- .joinbox__title p{
+.joinbox__title p {
   text-align: center;
   font-size: 1.2em;
-  font-weight: bold
+  font-weight: bold;
 }
 
-#joinboxContents{
+#joinboxContents {
   font-size: 1em;
   font-weight: 300;
 }
@@ -504,47 +508,45 @@ dialog li {
   flex-direction: column;
 }
 
-.joinbox__title{
+.joinbox__title {
   display: flex;
   width: 40rem;
 }
 
-.joinbox__title__owner{
+.joinbox__title__owner {
   flex: 5;
   margin-right: 20px;
 }
 
-.joinbox__title__hospital{
+.joinbox__title__hospital {
   flex: 5;
 }
 
-
-
 /* 회원가입버튼 */
-.signBtn{
+.signBtn {
   width: 300px;
   height: 40px;
   border-radius: 20px;
   background-color: var(--color-background);
-  border: 1px solid var(--color-grey1) ;
+  border: 1px solid var(--color-grey1);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: bold;
   /* color: var(--color-main-text); */
 }
 
-.signUp{
+.signUp {
   margin: 0 5px;
 }
 
-.signUpH{
-  margin: 0 5px; 
+.signUpH {
+  margin: 0 5px;
 }
 
 #scroll-checkbox {
   margin-right: 10px;
 }
 
-#scroll-checkbox2{
+#scroll-checkbox2 {
   margin: 0 10px;
 }
 
@@ -586,11 +588,20 @@ input:focus {
   flex-direction: column;
 }
 
-.item7 .item7__business{
+/*사업자 인증 관련 */
+.item7 .item7__business {
   display: flex;
 }
 
-#businessBtn{
+.item7__business.hidden {
+  display: none;
+}
+
+information.business2.hidden {
+  display: none;
+}
+
+.item7__business .businessBtn {
   width: 5rem;
   margin-left: 10px;
   border: 1px solid var(--color-main-point3);
@@ -610,27 +621,27 @@ input:focus {
   font-size: 0.6rem;
 }
 
-.item6__email{
+.item6__email {
   margin-right: 10px;
 }
 
-#loginPopup{
+#loginPopup {
   width: max-content;
   padding: 40px;
 }
 
-#loginPopup .contents{
+#loginPopup .contents {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-#loginPopup .contents h3{
+#loginPopup .contents h3 {
   line-height: 4rem;
 }
 
-#loginPopup .contents img{
+#loginPopup .contents img {
   width: 20rem;
   margin-top: 2rem;
 }
@@ -639,5 +650,3 @@ input:focus {
   margin: 20px 0;
   font-size: 1.2rem;
 }
-
-

@@ -18,8 +18,8 @@ class MailServiceTest {
   void sendSimpleMail() {
     StringBuffer str = new StringBuffer();
     str.append("<html>");
-    str.append("<a href = 'http://localhost/login'>로그인</a>");
+    str.append("<a href='http'>로그인</a>");
     str.append("</html>");
-    mailService.sendMail("ynangyung97@gmail.com","제목",str.toString());
+    mailService.sendMail("spodos37@gmail.com","test","test");
   }
 }
