@@ -129,4 +129,16 @@ public class MemberSVCImpl implements MemberSVC {
   public Optional<String> findIdByEmail(String userEmail) {
     return Optional.empty();
   }
+
+  /**
+   * 비밀번호 찾기
+   *
+   * @param userEmail 이메일
+   * @param userId    아이디
+   * @return
+   */
+  @Override
+  public boolean isExistByEmailAndId(String userEmail, String userId) {
+    return memberDAO.isExistByEmailAndId(userEmail,userId);
+  }
 }

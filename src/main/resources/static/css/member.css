@@ -181,6 +181,7 @@ input:focus {
   outline: none;
 }
 
+
 /* 아이디 찾기, 비밀번호찾기 영역 */
 .findUser__menu {
   display: flex;

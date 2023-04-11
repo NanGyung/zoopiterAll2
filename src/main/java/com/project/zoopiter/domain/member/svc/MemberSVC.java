@@ -82,4 +82,12 @@ public interface MemberSVC {
    * @return
    */
   Optional<String> findIdByEmail(String userEmail);
+
+  /**
+   * 비밀번호 찾기
+   * @param userEmail 이메일
+   * @param userId 아이디
+   * @return
+   */
+  boolean isExistByEmailAndId(String userEmail, String userId);
 }
