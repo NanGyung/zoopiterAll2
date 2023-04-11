@@ -28,6 +28,15 @@ public class MemberSVCImpl implements MemberSVC {
   }
 
   /**
+   * @param member 회원정보
+   * @return
+   */
+  @Override
+  public Member save2(Member member) {
+    return memberDAO.save2(member);
+  }
+
+  /**
    * 회원정보수정
    *
    * @param userId 아이디

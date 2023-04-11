@@ -49,6 +49,29 @@ public class MemberDAOImpl implements MemberDAO {
     return member;
   }
 
+  @Override
+  public Member save2(Member member) {
+    StringBuffer sql = new StringBuffer();
+    sql.append("insert into member( ");
+    sql.append(" user_id, ");
+    sql.append(" user_pw, ");
+    sql.append(" user_nick, ");
+    sql.append(" user_email, ");
+    sql.append(" gubun ");
+    sql.append(") values( ");
+    sql.append(" :userId, ");
+    sql.append(" :userPw, ");
+    sql.append(" :userNick, ");
+    sql.append(" :userEmail, ");
+    sql.append(" 'H0101' ");
+    sql.append(" ) ");
+
+    SqlParameterSource param = new BeanPropertySqlParameterSource(member);
+
+    template.update(sql.toString(),param);
+
+    return member;
+  }
   /**
    * 회원정보수정
    *

@@ -585,11 +585,20 @@ input:focus {
   flex-direction: column;
 }
 
+/*사업자 인증 관련 */
 .item7 .item7__business{
   display: flex;
 }
 
-#businessBtn{
+.item7__business.hidden{
+  display: none;
+}
+
+information.business2.hidden{
+  display: none;
+}
+
+.item7__business .businessBtn{
   width: 5rem;
   margin-left: 10px;
   border: 1px solid var(--color-main-point3);
