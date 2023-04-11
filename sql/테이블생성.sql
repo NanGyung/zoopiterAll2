@@ -1,4 +1,4 @@
---Å×ÀÌºí »èÁ¦
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 drop table C_BBSC CASCADE CONSTRAINTS;
 drop table BBSC CASCADE CONSTRAINTS;
 drop table C_BBSH CASCADE CONSTRAINTS;
@@ -12,7 +12,7 @@ drop table MEMBER CASCADE CONSTRAINTS;
 drop table CODE CASCADE CONSTRAINTS;
 drop table UPLOADFILE CASCADE CONSTRAINTS;
 
---½ÃÄö½º»èÁ¦
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 drop sequence C_BBSC_CC_ID_SEQ;
 drop sequence BBSC_BBSC_ID_seq;
 drop sequence C_BBSH_HC_ID_SEQ;
@@ -25,195 +25,195 @@ drop sequence UPLOADFILE_UPLOADFILE_ID_SEQ;
 
 
 -------
---ÄÚµå
+--ï¿½Úµï¿½
 -------
 create table code(
-    code_id     varchar2(10),       --ÄÚµå
-    decode      varchar2(30),       --ÄÚµå¸í
-    discript    clob,               --ÄÚµå¼³¸í
-    pcode_id    varchar2(10),       --»óÀ§ÄÚµå
-    useyn       char(1) default 'Y',            --»ç¿ë¿©ºÎ (»ç¿ë:'Y',¹Ì»ç¿ë:'N')
-    cdate       timestamp default systimestamp,         --»ý¼ºÀÏ½Ã
-    udate       timestamp default systimestamp          --¼öÁ¤ÀÏ½Ã
+    code_id     varchar2(10),       --ï¿½Úµï¿½
+    decode      varchar2(30),       --ï¿½Úµï¿½ï¿½
+    discript    clob,               --ï¿½Úµå¼³ï¿½ï¿½
+    pcode_id    varchar2(10),       --ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+    useyn       char(1) default 'Y',            --ï¿½ï¿½ë¿©ï¿½ï¿½ (ï¿½ï¿½ï¿½:'Y',ï¿½Ì»ï¿½ï¿½:'N')
+    cdate       timestamp default systimestamp,         --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
+    udate       timestamp default systimestamp          --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
 );
---±âº»Å°
+--ï¿½âº»Å°
 alter table code add Constraint code_code_id_pk primary key (code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table code modify decode constraint code_decode_nn not null;
 alter table code modify useyn constraint code_useyn_nn not null;
 alter table code add constraint code_useyn_ck check(useyn in ('Y','N'));
 
---»ùÇÃµ¥ÀÌÅÍ of code
-insert into code (code_id,decode,pcode_id,useyn) values ('M01','È¸¿ø±¸ºÐ',null,'Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('M0101','ÀÏ¹Ý','M01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('H0101','º´¿ø','M01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('M01A1','°ü¸®ÀÚ','M01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('P01','±âÃÊÁ¢Á¾',null,'Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('P0101','¹ÌÁ¢Á¾','P01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('P0102','Á¢Á¾ Àü','P01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('P0103','Á¢Á¾ Áß','P01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('P0104','Á¢Á¾ ¿Ï·á','P01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('B01','°Ô½ÃÆÇ',null,'Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('B0101','º´¿øÈÄ±â','B01','Y');
-insert into code (code_id,decode,pcode_id,useyn) values ('B0102','Ä¿¹Â´ÏÆ¼','B01','Y');
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of code
+insert into code (code_id,decode,pcode_id,useyn) values ('M01','È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',null,'Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('M0101','ï¿½Ï¹ï¿½','M01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('H0101','ï¿½ï¿½ï¿½ï¿½','M01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('M01A1','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','M01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('P01','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',null,'Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('P0101','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','P01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('P0102','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½','P01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('P0103','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½','P01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('P0104','ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½','P01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('B01','ï¿½Ô½ï¿½ï¿½ï¿½',null,'Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('B0101','ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½','B01','Y');
+insert into code (code_id,decode,pcode_id,useyn) values ('B0102','Ä¿ï¿½Â´ï¿½Æ¼','B01','Y');
 commit;
 
 ------------
---¾÷·Îµå ÆÄÀÏ
+--ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½
 ------------
 CREATE TABLE UPLOADFILE(
-  UPLOADFILE_ID             NUMBER,          --ÆÄÀÏ ¾ÆÀÌµð(³»ºÎ°ü¸®¿ë)
-  CODE                      varchar2(11),    --ºÐ·ù ÄÚµå(Ä¿¹Â´ÏÆ¼: F0101, º´¿øÈÄ±â: F0102, È¸¿øÇÁ·ÎÇÊ: F0103)
-  RID                       varchar2(10),    --ÂüÁ¶¹øÈ£ --ÇØ´ç Ã·ºÎÆÄÀÏÀÌ Ã·ºÎµÈ °Ô½Ã±ÛÀÇ ¼ø¹ø
-  STORE_FILENAME            varchar2(50),    --º¸°üÆÄÀÏ¸í
-  UPLOAD_FILENAME           varchar2(50),    --¾÷·ÎµåÆÄÀÏ¸í
-  FSIZE                     varchar2(45),    --ÆÄÀÏÅ©±â 
-  FTYPE                     varchar2(50),    --ÆÄÀÏÀ¯Çü
-  CDATE                     timestamp default systimestamp, --ÀÛ¼ºÀÏ
-  UDATE                     timestamp default systimestamp  --¼öÁ¤ÀÏ
+  UPLOADFILE_ID             NUMBER,          --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½(ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½)
+  CODE                      varchar2(11),    --ï¿½Ð·ï¿½ ï¿½Úµï¿½(Ä¿ï¿½Â´ï¿½Æ¼: F0101, ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½: F0102, È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: F0103)
+  RID                       varchar2(10),    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ --ï¿½Ø´ï¿½ Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½Îµï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  STORE_FILENAME            varchar2(50),    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
+  UPLOAD_FILENAME           varchar2(50),    --ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
+  FSIZE                     varchar2(45),    --ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ 
+  FTYPE                     varchar2(50),    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  CDATE                     timestamp default systimestamp, --ï¿½Û¼ï¿½ï¿½ï¿½
+  UDATE                     timestamp default systimestamp  --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table UPLOADFILE add Constraint UPLOADFILE_UPLOADFILE_ID_pk primary key (UPLOADFILE_ID);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table UPLOADFILE add constraint  UPLOADFILE_CODE_fk
     foreign key(CODE) references CODE(CODE_ID);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table UPLOADFILE modify CODE constraint UPLOADFILE_CODE_nn not null;
 alter table UPLOADFILE modify RID constraint UPLOADFILE_RID_nn not null;
 alter table UPLOADFILE modify STORE_FILENAME constraint UPLOADFILE_STORE_FILENAME_nn not null;
 alter table UPLOADFILE modify UPLOAD_FILENAME constraint UPLOADFILE_UPLOAD_FILENAME_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence UPLOADFILE_UPLOADFILE_ID_SEQ;
 
---»ùÇÃµ¥ÀÌÅÍ of UPLOADFILE
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of UPLOADFILE
 insert into UPLOADFILE (UPLOADFILE_ID, CODE , RID, STORE_FILENAME, UPLOAD_FILENAME, FSIZE,FTYPE)
- values(UPLOADFILE_UPLOADFILE_ID_SEQ.NEXTVAL, 'B0102', '001', 'F0101.png', 'Ä¿¹Â´ÏÆ¼ÀÌ¹ÌÁöÃ·ºÎ1.png','100','image/png');
+ values(UPLOADFILE_UPLOADFILE_ID_SEQ.NEXTVAL, 'B0102', '001', 'F0101.png', 'Ä¿ï¿½Â´ï¿½Æ¼ï¿½Ì¹ï¿½ï¿½ï¿½Ã·ï¿½ï¿½1.png','100','image/png');
 
 COMMIT;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC UPLOADFILE;
 
 -------
---È¸¿ø
+--È¸ï¿½ï¿½
 -------
 create table member (
-    USER_ID                varchar2(20),   --·Î±ä ¾ÆÀÌµð
-    USER_PW                varchar2(20),   --·Î±ä ºñ¹Ð¹øÈ£
-    USER_NICK              varchar2(30),   --º°Äª
-    USER_EMAIL             varchar2(40),  --ÀÌ¸ÞÀÏ
-    GUBUN                  varchar2(10) default 'M0101',    --È¸¿ø±¸ºÐ(º´¿ø,ÀÏ¹Ý) ÀÏ¹ÝÈ¸¿ø °ü¸®ÄÚµå M0101, º´¿øÈ¸¿ø °ü¸®ÄÚµå H0101
-    USER_PHOTO             BLOB,           --»çÁø
-    USER_CREATE_DATE       timestamp default systimestamp,         --»ý¼ºÀÏ½Ã
-    USER_UPDATE            timestamp default systimestamp          --¼öÁ¤ÀÏ½Ã
+    USER_ID                varchar2(20),   --ï¿½Î±ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+    USER_PW                varchar2(20),   --ï¿½Î±ï¿½ ï¿½ï¿½Ð¹ï¿½È£
+    USER_NICK              varchar2(30),   --ï¿½ï¿½Äª
+    USER_EMAIL             varchar2(40),  --ï¿½Ì¸ï¿½ï¿½ï¿½
+    GUBUN                  varchar2(10) default 'M0101',    --È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½,ï¿½Ï¹ï¿½) ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ M0101, ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ H0101
+    USER_PHOTO             BLOB,           --ï¿½ï¿½ï¿½ï¿½
+    USER_CREATE_DATE       timestamp default systimestamp,         --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
+    USER_UPDATE            timestamp default systimestamp          --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table member add Constraint member_user_id_pk primary key (user_id);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table member add constraint member_gubun_fk
     foreign key(gubun) references code(code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table member add constraint member_user_email_uk unique (user_email);
 alter table member modify user_pw constraint member_user_pw_nn not null;
 alter table member modify user_nick constraint member_user_nick_nn not null;
 alter table member modify user_email constraint member_user_email_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
 desc member;
 
---»ùÇÃµ¥ÀÌÅÍ of MEMBER
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of MEMBER
 insert into member (USER_ID , USER_PW, USER_NICK, USER_EMAIL, GUBUN)
-    values('test1', 'test1234', 'º°Äª1', 'test1@gamil.com', 'M0101');
+    values('test1', 'test1234', 'ï¿½ï¿½Äª1', 'test1@gamil.com', 'M0101');
 
 commit;
 
 -------
---º´¿øÈ¸¿ø
+--ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½
 -------
 create table hmember (
-    H_ID                   varchar2(20),   --·Î±ä ¾ÆÀÌµð
-    H_PW                   varchar2(20),   --·Î±ä ºñ¹Ð¹øÈ£
-    H_NAME                 varchar2(52),   --º´¿ø »óÈ£¸í
-    H_EMAIL                varchar2(40),   --ÀÌ¸ÞÀÏ
-    H_TEL                  varchar2(30),   --º´¿ø ¿¬¶ôÃ³
-    H_TIME                 clob,           --Áø·á½Ã°£
-    H_INFO                 varchar2(60),   --ÆíÀÇ½Ã¼³Á¤º¸
-    H_ADDINFO              varchar2(60),   --º´¿ø±âÅ¸Á¤º¸
-    H_PLIST                varchar2(40),   --Áø·áµ¿¹°
-    GUBUN                  varchar2(10) default 'H0101',    --È¸¿ø±¸ºÐ(º´¿ø,ÀÏ¹Ý) ÀÏ¹ÝÈ¸¿ø °ü¸®ÄÚµå M0101, º´¿øÈ¸¿ø °ü¸®ÄÚµå H0101
-    H_CREATE_DATE       timestamp default systimestamp,         --»ý¼ºÀÏ½Ã
-    H_UPDATE            timestamp default systimestamp          --¼öÁ¤ÀÏ½Ã
+    H_ID                   varchar2(20),   --ï¿½Î±ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+    H_PW                   varchar2(20),   --ï¿½Î±ï¿½ ï¿½ï¿½Ð¹ï¿½È£
+    H_NAME                 varchar2(52),   --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½
+    H_EMAIL                varchar2(40),   --ï¿½Ì¸ï¿½ï¿½ï¿½
+    H_TEL                  varchar2(30),   --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³
+    H_TIME                 clob,           --ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
+    H_INFO                 varchar2(60),   --ï¿½ï¿½ï¿½Ç½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½
+    H_ADDINFO              varchar2(60),   --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
+    H_PLIST                varchar2(40),   --ï¿½ï¿½ï¿½áµ¿ï¿½ï¿½
+    GUBUN                  varchar2(10) default 'H0101',    --È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½,ï¿½Ï¹ï¿½) ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ M0101, ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ H0101
+    H_CREATE_DATE       timestamp default systimestamp,         --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
+    H_UPDATE            timestamp default systimestamp          --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table hmember add Constraint hmember_h_id_pk primary key (h_id);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table hmember add constraint hmember_gubun_fk
     foreign key(gubun) references code(code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table hmember add Constraint hmember_h_email unique (h_email);
 alter table hmember modify h_pw constraint hmember_h_pw_nn not null;
 alter table hmember modify h_email constraint hmember_h_email_nn not null;
 alter table hmember modify h_name constraint hmember_h_name_nn not null;
 
---»ùÇÃ µ¥ÀÌÅÍ OF HMEMBER
+--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ OF HMEMBER
 insert into HMEMBER (H_ID , H_PW, H_NAME, H_EMAIL, H_TEL, H_TIME, H_INFO, H_ADDINFO, H_PLIST, GUBUN)
     values(
     'htest1',
     'htest1234',
-    '¸ÞÀÌ µ¿¹°º´¿ø',
+    'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
     'htest1@gamil.com',
     '211-3375',
-    '¿ù¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    È­¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ¼ö¿äÀÏ
-    (½Ä¸ñÀÏ)
-    ¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ½Ã°£ÀÌ ´Þ¶óÁú ¼ö ÀÖÀ½
-    ¸ñ¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ±Ý¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    Åä¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 4:00
-    ÀÏ¿äÀÏ	ÈÞ¹«ÀÏ',
-    'ÁÖÂ÷, ¹«¼± ÀÎÅÍ³Ý, ¹Ý·Áµ¿¹° µ¿¹Ý',
-    '°­¾ÆÁö, °í¾çÀÌ Àü¹® º´¿øÀÔ´Ï´Ù!',
-    '°­¾ÆÁö, °í¾çÀÌ',
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    È­ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    (ï¿½Ä¸ï¿½ï¿½ï¿½)
+    ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½Ý¿ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 4:00
+    ï¿½Ï¿ï¿½ï¿½ï¿½	ï¿½Þ¹ï¿½ï¿½ï¿½',
+    'ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í³ï¿½, ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½',
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!',
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
     'H0101');
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 desc hmember;
 commit;
 
 -------------------
--- µ¿¹°º´¿ø °ø°øµ¥ÀÌÅÍ
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -------------------
 CREATE TABLE hospital_data(
-   hd_id              NUMBER(4)                         --µ¿¹°º´¿ø µ¥ÀÌÅÍ¹øÈ£
-  ,hd_code            NUMBER(7)                         --°³¹æÀÚÄ¡´ÜÃ¼ÄÚµå
-  ,hd_manage          VARCHAR2(13)                      --°ü¸®¹øÈ£
-  ,hd_perdate         DATE                              --ÀÎÇã°¡ÀÏÀÚ
-  ,hd_statuscode      NUMBER(1)                         --¿µ¾÷»óÅÂ±¸ºÐÄÚµå
-  ,hd_satusname       VARCHAR2(23)                      --¿µ¾÷»óÅÂ¸í
-  ,hd_detailcode      NUMBER(4)                         --»ó¼¼¿µ¾÷»óÅÂÄÚµå
-  ,hd_detailname      VARCHAR2(13)                       --»ó¼¼¿µ¾÷»óÅÂ¸í
-  ,hd_tel             VARCHAR2(30)                      --¼ÒÀçÁöÀüÈ­
-  ,hd_address_general VARCHAR2(200)                      --Áö¹øÁÖ¼Ò
-  ,hd_address_road    VARCHAR2(200)                     --µµ·Î¸íÁÖ¼Ò
-  ,hd_address_roadnum NUMBER(7)                         --µµ·Î¸í¿ìÆí¹øÈ£
-  ,hd_name            VARCHAR2(52)                      --»ç¾÷Àå¸í
-  ,hd_adit_date       VARCHAR2(22)                      --ÃÖÁ¾¼öÁ¤½ÃÁ¡
-  ,hd_adit_gubun      CHAR(1) DEFAULT 'I'               --µ¥ÀÌÅÍ°»½Å±¸ºÐ(°»½ÅµÊ: U, °»½Å¾ÈµÊ: I)
-  ,hd_adit_resdate    VARCHAR2(22)                      --µ¥ÀÌÅÍ°»½ÅÀÏÀÚ
-  ,hd_lng             NUMBER                            --ÁÂÇ¥(x)
-  ,hd_lat             NUMBER                            --ÁÂÇ¥(y)
+   hd_id              NUMBER(4)                         --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½È£
+  ,hd_code            NUMBER(7)                         --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½Ã¼ï¿½Úµï¿½
+  ,hd_manage          VARCHAR2(13)                      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+  ,hd_perdate         DATE                              --ï¿½ï¿½ï¿½ã°¡ï¿½ï¿½ï¿½ï¿½
+  ,hd_statuscode      NUMBER(1)                         --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ï¿½Úµï¿½
+  ,hd_satusname       VARCHAR2(23)                      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½
+  ,hd_detailcode      NUMBER(4)                         --ï¿½ó¼¼¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+  ,hd_detailname      VARCHAR2(13)                       --ï¿½ó¼¼¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½
+  ,hd_tel             VARCHAR2(30)                      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­
+  ,hd_address_general VARCHAR2(200)                      --ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+  ,hd_address_road    VARCHAR2(200)                     --ï¿½ï¿½ï¿½Î¸ï¿½ï¿½Ö¼ï¿½
+  ,hd_address_roadnum NUMBER(7)                         --ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+  ,hd_name            VARCHAR2(52)                      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  ,hd_adit_date       VARCHAR2(22)                      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  ,hd_adit_gubun      CHAR(1) DEFAULT 'I'               --ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ï¿½Å±ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Åµï¿½: U, ï¿½ï¿½ï¿½Å¾Èµï¿½: I)
+  ,hd_adit_resdate    VARCHAR2(22)                      --ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  ,hd_lng             NUMBER                            --ï¿½ï¿½Ç¥(x)
+  ,hd_lat             NUMBER                            --ï¿½ï¿½Ç¥(y)
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table hospital_data add Constraint hospital_data_hd_id_pk primary key (hd_id);
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table hospital_data modify hd_code constraint hospital_data_hd_code_nn not null;
 alter table hospital_data modify hd_manage constraint hospital_data_hd_manage_nn not null;
 alter table hospital_data modify hd_perdate constraint hospital_data_hd_perdate_nn not null;
@@ -230,103 +230,103 @@ alter table hospital_data modify hd_lat constraint hospital_data_hd_lat_nn not n
 
 alter table hospital_data add constraint hospital_data_hd_adit_gubun_ck check(hd_adit_gubun in ('U','I'));
 
---»ùÇÃµ¥ÀÌÅÍ of HOSPITAL_DATA : µ¿¹°º´¿øµ¥ÀÌÅÍ(¿ï»ê, ºÎ»ê).sql ÆÄÀÏÀ» ¿­¾î¼­ insert ÇØ¾ßÇÔ
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of HOSPITAL_DATA : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½, ï¿½Î»ï¿½).sql ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¼­ insert ï¿½Ø¾ï¿½ï¿½ï¿½
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 desc HOSPITAL_DATA;
 commit;
 
 
 
 ------------
---º´¿øÁ¤º¸
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ------------
 CREATE TABLE hospital_info(
-  H_NUM              NUMBER,         --¼ø¹ø
-  HD_ID              NUMBER(4),      --µ¿¹°º´¿ø µ¥ÀÌÅÍ¹øÈ£
-  H_ID               varchar2(20),   --º´¿øÈ¸¿ø ¾ÆÀÌµð
-  H_NAME             varchar2(52),   --º´¿ø »óÈ£¸í
-  H_TEL              VARCHAR2(30),   --º´¿ø ¿¬¶ôÃ³
-  H_PLIST            varchar2(40),   --Áø·áµ¿¹°
-  H_TIME             clob,           --Áø·á½Ã°£
-  H_INFO             varchar2(60),   --ÆíÀÇ½Ã¼³Á¤º¸
-  H_ADDINFO          varchar2(60),   --º´¿ø±âÅ¸Á¤º¸
-  H_IMG              BLOB,           --º´¿øÀÌ¹ÌÁö
-  H_CREATE_DATE       timestamp default systimestamp,         --»ý¼ºÀÏ½Ã
-  H_UPDATE            timestamp default systimestamp          --¼öÁ¤ÀÏ½Ã
+  H_NUM              NUMBER,         --ï¿½ï¿½ï¿½ï¿½
+  HD_ID              NUMBER(4),      --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½È£
+  H_ID               varchar2(20),   --ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+  H_NAME             varchar2(52),   --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½
+  H_TEL              VARCHAR2(30),   --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³
+  H_PLIST            varchar2(40),   --ï¿½ï¿½ï¿½áµ¿ï¿½ï¿½
+  H_TIME             clob,           --ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
+  H_INFO             varchar2(60),   --ï¿½ï¿½ï¿½Ç½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  H_ADDINFO          varchar2(60),   --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
+  H_IMG              BLOB,           --ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½
+  H_CREATE_DATE       timestamp default systimestamp,         --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
+  H_UPDATE            timestamp default systimestamp          --ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table HOSPITAL_INFO add Constraint HOSPITAL_INFO_H_NUM_pk primary key (H_NUM);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table HOSPITAL_INFO add constraint  HOSPITAL_INFO_H_ID_fk
     foreign key(H_ID) references hmember(H_ID);
 alter table HOSPITAL_INFO add constraint  HOSPITAL_INFO_HD_ID_fk
     foreign key(HD_ID) references hospital_data(HD_ID);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table HOSPITAL_INFO modify H_ID constraint HOSPITAL_INFO_H_ID_nn not null;
 alter table HOSPITAL_INFO modify H_NAME constraint HOSPITAL_INFO_H_NAME_nn not null;
 alter table HOSPITAL_INFO modify H_CREATE_DATE constraint HOSPITAL_INFO_H_CREATE_DATE_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence HOSPITAL_INFO_H_NUM_seq;
 
---------  ¾Æ·¡ »ùÇÃµ¥ÀÌÅÍ »ý¼º Àü¿¡ hospital_data »ùÇÃµ¥ÀÌÅÍ ¸ÕÀú »ý¼ºÇØ¾ßÇÔ!!!!  ----------
---»ùÇÃµ¥ÀÌÅÍ of hospital_info
+--------  ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ hospital_data ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½!!!!  ----------
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of hospital_info
 insert into hospital_info (H_NUM , HD_ID, H_ID, H_NAME, H_TEL, H_PLIST, H_TIME, H_INFO, H_ADDINFO)
     values(
     hospital_info_h_num_seq.nextval, 
     5400, 
     'htest1', 
-    '¸ÞÀÌ µ¿¹°º´¿ø', 
+    'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 
     '211-3375', 
-    '°­¾ÆÁö, °í¾çÀÌ', 
-    '¿ù¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    È­¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ¼ö¿äÀÏ
-    (½Ä¸ñÀÏ)
-    ¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ½Ã°£ÀÌ ´Þ¶óÁú ¼ö ÀÖÀ½
-    ¸ñ¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    ±Ý¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 7:00
-    Åä¿äÀÏ	¿ÀÀü 9:30~¿ÀÈÄ 4:00
-    ÀÏ¿äÀÏ	ÈÞ¹«ÀÏ', 
-    'ÁÖÂ÷, ¹«¼± ÀÎÅÍ³Ý, ¹Ý·Áµ¿¹° µ¿¹Ý',
-    '°­¾ÆÁö, °í¾çÀÌ Àü¹® º´¿øÀÔ´Ï´Ù!'
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    È­ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    (ï¿½Ä¸ï¿½ï¿½ï¿½)
+    ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½Ý¿ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 7:00
+    ï¿½ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½ 9:30~ï¿½ï¿½ï¿½ï¿½ 4:00
+    ï¿½Ï¿ï¿½ï¿½ï¿½	ï¿½Þ¹ï¿½ï¿½ï¿½', 
+    'ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í³ï¿½, ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½',
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!'
     );
 
 
 COMMIT;
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC HOSPITAL_INFO;
 
 ------------
---¹Ý·Áµ¿¹° Á¤º¸
+--ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ------------
 CREATE TABLE PET_INFO(
-  PET_NUM            NUMBER,         --¼ø¹ø
-  USER_ID            varchar2(20),   --ÀÏ¹ÝÈ¸¿ø ¾ÆÀÌµð
-  PET_IMG            BLOB,           --¹Ý·Áµ¿¹° »çÁø
-  PET_NAME           varchar2(40),   --¹Ý·Áµ¿¹° ÀÌ¸§
-  PET_TYPE           VARCHAR2(20),   --¹Ý·Áµ¿¹° Ç°Á¾
-  PET_GENDER         CHAR(1) default 'M',   --¹Ý·Áµ¿¹° ¼ºº°(³²: M, ¿©: F)
-  PET_BIRTH          DATE,           --¹Ý·Áµ¿¹° »ýÀÏ
-  PET_YN             CHAR(1) default 'N',       --Áß¼ºÈ­ ¿©ºÎ(¿Ï·á: Y, ¹Ì¿Ï·á: N)
-  PET_DATE           DATE,           --ÀÔ¾çÀÏ
+  PET_NUM            NUMBER,         --ï¿½ï¿½ï¿½ï¿½
+  USER_ID            varchar2(20),   --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+  PET_IMG            BLOB,           --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_NAME           varchar2(40),   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+  PET_TYPE           VARCHAR2(20),   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ Ç°ï¿½ï¿½
+  PET_GENDER         CHAR(1) default 'M',   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½: M, ï¿½ï¿½: F)
+  PET_BIRTH          DATE,           --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_YN             CHAR(1) default 'N',       --ï¿½ß¼ï¿½È­ ï¿½ï¿½ï¿½ï¿½(ï¿½Ï·ï¿½: Y, ï¿½Ì¿Ï·ï¿½: N)
+  PET_DATE           DATE,           --ï¿½Ô¾ï¿½ï¿½ï¿½
   PET_VAC            VARCHAR2(15) default 'p0101',   
-  --±âÃÊÁ¢Á¾ ¿©ºÎ(¹ÌÁ¢Á¾(P0101), Á¢Á¾ Àü(P0102), Á¢Á¾ Áß(P0103), Á¢Á¾ ¿Ï·á(P0104))
-  PET_INFO           VARCHAR2(60)    --±âÅ¸»çÇ×
+  --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(P0101), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(P0102), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(P0103), ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½(P0104))
+  PET_INFO           VARCHAR2(60)    --ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table PET_INFO add Constraint PET_INFO_PET_NUM_pk primary key (PET_NUM);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table PET_INFO add constraint  PET_INFO_USER_ID_fk
     foreign key(USER_ID) references member(USER_ID);
 alter table PET_INFO add constraint  PET_INFO_PET_VAC_fk
     foreign key(PET_VAC) references  code(code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table PET_INFO modify USER_ID constraint PET_INFO_USER_ID_nn not null;
 alter table PET_INFO modify PET_NAME constraint PET_INFO_PET_NAME_nn not null;
 alter table PET_INFO modify PET_VAC constraint PET_INFO_PET_VAC_nn not null;
@@ -334,21 +334,21 @@ alter table PET_INFO modify PET_GENDER constraint PET_INFO_PET_GENDER_nn not nul
 
 alter table PET_INFO add constraint PET_INFO_PET_YN_ck check(PET_YN in ('Y','N'));
 alter table PET_INFO add constraint PET_INFO_PET_GENDER_ck check(PET_GENDER in ('M','F'));
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence PET_INFO_PET_NUM_seq;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC PET_INFO;
 
---»ùÇÃµ¥ÀÌÅÍ of PET_INFO
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of PET_INFO
 insert into PET_INFO (PET_NUM , USER_ID, PET_NAME, PET_TYPE, PET_GENDER, PET_BIRTH, PET_YN, PET_DATE, PET_VAC)
     values(
     PET_INFO_PET_NUM_seq.nextval, 
     'test1', 
-    '¹Ý·Áµ¿¹°1', 
-    '°­¾ÆÁö', 
+    'ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½1', 
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 
     'F', 
     '2022-01-01', 
     'Y', 
@@ -360,40 +360,40 @@ COMMIT;
 
 
 ------------
---ÀÇ·á¼öÃ¸
+--ï¿½Ç·ï¿½ï¿½Ã¸
 ------------
 CREATE TABLE PET_NOTE(
-  NOTE_NUM            NUMBER,         --¼ø¹ø
-  USER_ID            varchar2(20),   --ÀÏ¹ÝÈ¸¿ø ¾ÆÀÌµð
-  PET_NAME           varchar2(40),   --¹Ý·Áµ¿¹° ÀÌ¸§
-  PET_IMG            BLOB,           --¹Ý·Áµ¿¹° »çÁø
-  PET_TYPE           VARCHAR2(20),   --¹Ý·Áµ¿¹° Ç°Á¾
-  PET_GENDER         CHAR(1) default 'M',   --¹Ý·Áµ¿¹° ¼ºº°(³²: M, ¿©: F)
-  PET_BIRTH          DATE,           --¹Ý·Áµ¿¹° »ýÀÏ
-  PET_YN             CHAR(1),        --Áß¼ºÈ­ ¿©ºÎ(¿Ï·á: Y, ¹Ì¿Ï·á: N)
-  PET_INFO           varchar2(60),   --±âÅ¸»çÇ×
-  PET_WEIG           number,         --¹Ý·Áµ¿¹° ¸ö¹«°Ô
-  PET_H_CHECK        DATE,           --º´¿ø ¹æ¹®³¯Â¥
-  PET_H_NAME         VARCHAR2(52),   --¹æ¹®ÇÑ º´¿øÀÌ¸§
-  PET_H_TEACHER       VARCHAR2(10),   --´ã´ç¼öÀÇ»ç
-  PET_REASON         VARCHAR2(60),  --º´¿ø³»¹æÀÌÀ¯
-  PET_STMP           VARCHAR2(60),  --µ¿¹° Áõ»ó
-  PET_SIGNICE        VARCHAR2(60),  --À¯ÀÇ»çÇ×
-  PET_NEXTDATE       DATE,           --´ÙÀ½ ¿¹¾àÀÏ
+  NOTE_NUM            NUMBER,         --ï¿½ï¿½ï¿½ï¿½
+  USER_ID            varchar2(20),   --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+  PET_NAME           varchar2(40),   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+  PET_IMG            BLOB,           --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_TYPE           VARCHAR2(20),   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ Ç°ï¿½ï¿½
+  PET_GENDER         CHAR(1) default 'M',   --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½: M, ï¿½ï¿½: F)
+  PET_BIRTH          DATE,           --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_YN             CHAR(1),        --ï¿½ß¼ï¿½È­ ï¿½ï¿½ï¿½ï¿½(ï¿½Ï·ï¿½: Y, ï¿½Ì¿Ï·ï¿½: N)
+  PET_INFO           varchar2(60),   --ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
+  PET_WEIG           number,         --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  PET_H_CHECK        DATE,           --ï¿½ï¿½ï¿½ï¿½ ï¿½æ¹®ï¿½ï¿½Â¥
+  PET_H_NAME         VARCHAR2(52),   --ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+  PET_H_TEACHER       VARCHAR2(10),   --ï¿½ï¿½ï¿½ï¿½ï¿½Ç»ï¿½
+  PET_REASON         VARCHAR2(60),  --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  PET_STMP           VARCHAR2(60),  --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_SIGNICE        VARCHAR2(60),  --ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½
+  PET_NEXTDATE       DATE,           --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   PET_VAC            VARCHAR2(15) default 'p0101',   
-  --±âÃÊÁ¢Á¾ ¿©ºÎ(¹ÌÁ¢Á¾(P0101), Á¢Á¾ Àü(P0102), Á¢Á¾ Áß(P0103), Á¢Á¾ ¿Ï·á(P0104))
-  PET_DATE           VARCHAR2(15),  --ÀÛ¼º ³¯Â¥(Ä¶¸°´õ ¼±ÅÃ³¯Â¥)
-  PET_EDITDATE       VARCHAR2(15)   --¼öÁ¤ ³¯Â¥
+  --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(P0101), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(P0102), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(P0103), ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½(P0104))
+  PET_DATE           VARCHAR2(15),  --ï¿½Û¼ï¿½ ï¿½ï¿½Â¥(Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½Â¥)
+  PET_EDITDATE       VARCHAR2(15)   --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table PET_NOTE add Constraint PET_NOTE_NOTE_NUM_pk primary key (NOTE_NUM);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table PET_NOTE add constraint  PET_NOTE_USER_ID_fk
     foreign key(USER_ID) references member(USER_ID);
 alter table PET_NOTE add constraint  PET_NOTE_PET_VAC_fk
     foreign key(PET_VAC) references  code(code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table PET_NOTE modify USER_ID constraint PET_NOTE_USER_ID_nn not null;
 alter table PET_NOTE modify PET_H_CHECK constraint PET_NOTE_PET_H_CHECK_nn not null;
 alter table PET_NOTE modify PET_NAME constraint PET_NOTE_PET_NAME_nn not null;
@@ -401,193 +401,189 @@ alter table PET_NOTE modify PET_DATE constraint PET_NOTE_PET_DATE_nn not null;
 alter table PET_NOTE modify PET_EDITDATE constraint PET_NOTE_PET_EDITDATE_nn not null;
 alter table PET_NOTE add constraint PET_NOTE_PET_YN_ck check(PET_YN in ('Y','N'));
 alter table PET_NOTE add constraint PET_NOTE_PET_GENDER_ck check(PET_GENDER in ('M','F'));
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence PET_NOTE_NOTE_NUM_seq;
 
---»ùÇÃµ¥ÀÌÅÍ of PET_NOTE 
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of PET_NOTE 
 insert into PET_NOTE (
     NOTE_NUM , USER_ID, PET_NAME, PET_TYPE, PET_GENDER, PET_BIRTH, PET_YN, PET_WEIG, PET_H_CHECK, 
     PET_H_NAME, PET_H_TEACHER, PET_REASON, PET_STMP, PET_SIGNICE,PET_DATE, PET_NEXTDATE, PET_VAC, PET_EDITDATE)
     values(
     PET_NOTE_NOTE_NUM_seq.nextval, 
     'test1', 
-    '¹Ý·Áµ¿¹°1', 
-    '°­¾ÆÁö', 
+    'ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½1', 
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 
     'F', 
     '2022-01-01', 
     'Y', 
     4,
     '2023-03-02',
-    '¸ÞÀÌ µ¿¹°º´¿ø',
-    'È«±æµ¿',
-    'Á¤±â°ËÁø',
-    '¾È±¸°ÇÁ¶Áõ',
-    '¼öºÐ¼·Ãë¸¦ ½Å°æ½á¾ßÇÔ',
+    'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    'È«ï¿½æµ¿',
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    'ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    'ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ë¸¦ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½',
     '2023-04-01',
     '2023-04-01',
     'P0104',
     '2023-04-03'
     );
 COMMIT;
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC PET_NOTE;
 
 ------------
---°Ô½ÃÆÇ: º´¿øÈÄ±â
+--ï¿½Ô½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 ------------
 CREATE TABLE BBSH(
-  BBSH_ID            NUMBER,          --°Ô½Ã±Û ¹øÈ£(¼ø¹ø)
-  BH_TITLE           varchar2(150),   --±Û Á¦¸ñ
-  BH_CONTENT         clob,            --±Û ³»¿ë
-  PET_TYPE           varchar2(20),    --¹Ý·Áµ¿¹° Ç°Á¾
-  BH_ATTACH          BLOB,            --Ã·ºÎÆÄÀÏ
-  BH_HNAME           VARCHAR2(52),    --º´¿øÀÌ¸§
-  BH_HIT             NUMBER default 0,--Á¶È¸¼ö
-  BH_GUBUN           VARCHAR2(15) default 'B0101',      --°Ô½ÃÆÇ ±¸ºÐ(º´¿øÈÄ±â: B0101, Ä¿¹Â´ÏÆ¼: B0102)
-  USER_NICK          varchar2(30),    --ÀÏ¹ÝÈ¸¿ø ´Ð³×ÀÓ
-<<<<<<< HEAD
-=======
-  BH_GRADE           NUMBER,          --ÆòÁ¡(º°Á¡)
->>>>>>> da5ce351b86ee6c962102094e12e181cba872639
-  BH_CDATE           timestamp default systimestamp,   --ÀÛ¼ºÀÏ
-  BH_UDATE           timestamp default systimestamp    --¼öÁ¤ÀÏ 
+  BBSH_ID            NUMBER,          --ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£(ï¿½ï¿½ï¿½ï¿½)
+  BH_TITLE           varchar2(150),   --ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  BH_CONTENT         clob,            --ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_TYPE           varchar2(20),    --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ Ç°ï¿½ï¿½
+  BH_ATTACH          BLOB,            --Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  BH_HNAME           VARCHAR2(52),    --ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+  BH_HIT             NUMBER default 0,--ï¿½ï¿½È¸ï¿½ï¿½
+  BH_GUBUN           VARCHAR2(15) default 'B0101',      --ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½: B0101, Ä¿ï¿½Â´ï¿½Æ¼: B0102)
+  USER_NICK          varchar2(30),    --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½
+  BH_CDATE           timestamp default systimestamp,   --ï¿½Û¼ï¿½ï¿½ï¿½
+  BH_UDATE           timestamp default systimestamp    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table BBSH add Constraint BBSH_BBSH_ID_pk primary key (BBSH_ID);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table BBSH add constraint  BBSH_BH_GUBUN_fk
     foreign key(BH_GUBUN) references  code(code_id);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table BBSH modify BH_TITLE constraint BBSH_BH_TITLE_nn not null;
 alter table BBSH modify BH_CONTENT constraint BBSH_BH_CONTENT_nn not null;
 alter table BBSH modify USER_NICK constraint BBSH_USER_NICK_nn not null;
 alter table BBSH modify BH_HIT constraint BBSH_BH_HIT_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence BBSH_BBSH_ID_seq;
 
---»ùÇÃµ¥ÀÌÅÍ of BBSH
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of BBSH
 insert into BBSH (BBSH_ID , BH_TITLE, BH_CONTENT, PET_TYPE, BH_HNAME, BH_GUBUN, USER_NICK)
-    values(BBSH_BBSH_ID_seq.nextval, 'º´¿øÈÄ±âÁ¦¸ñ1', 'º´¿øÈÄ±âº»¹®1', '°í¾çÀÌ', '¸ÞÀÌ µ¿¹°º´¿ø', 'B0101','º°Äª1');
+    values(BBSH_BBSH_ID_seq.nextval, 'ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½1', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ä±âº»ï¿½ï¿½1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'B0101','ï¿½ï¿½Äª1');
 
 COMMIT;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC BBSH;
 
 ------------
---´ñ±Û: º´¿øÈÄ±â
+--ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 ------------
 CREATE TABLE C_BBSH(
-  HC_ID              NUMBER,          --´ñ±Û ¹øÈ£(¼ø¹ø)
-  BBSH_ID            NUMBER,          --°Ô½Ã±Û ¹øÈ£
-  HC_CONTENT         varchar2(1500),  --´ñ±Û ³»¿ë
-  USER_NICK          varchar2(30),    --ÀÏ¹ÝÈ¸¿ø ´Ð³×ÀÓ
-  BH_CDATE           timestamp default systimestamp,   --ÀÛ¼ºÀÏ
-  BH_UDATE           timestamp default systimestamp    --¼öÁ¤ÀÏ 
+  HC_ID              NUMBER,          --ï¿½ï¿½ï¿½ ï¿½ï¿½È£(ï¿½ï¿½ï¿½ï¿½)
+  BBSH_ID            NUMBER,          --ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£
+  HC_CONTENT         varchar2(1500),  --ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  USER_NICK          varchar2(30),    --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½
+  BH_CDATE           timestamp default systimestamp,   --ï¿½Û¼ï¿½ï¿½ï¿½
+  BH_UDATE           timestamp default systimestamp    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table C_BBSH add Constraint C_BBSH_HC_ID_pk primary key (HC_ID);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table C_BBSH add constraint  C_BBSH_BBSH_ID_fk
     foreign key(BBSH_ID) references BBSH(BBSH_ID);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table C_BBSH modify BBSH_ID constraint C_BBSH_BBSH_ID_nn not null;
 alter table C_BBSH modify HC_CONTENT constraint C_BBSH_HC_CONTENT_nn not null;
 alter table C_BBSH modify USER_NICK constraint C_BBSH_USER_NICK_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence C_BBSH_HC_ID_SEQ;
 
---»ùÇÃµ¥ÀÌÅÍ of C_BBSH
-insert into C_BBSH (HC_ID, BBSH_ID , HC_CONTENT, USER_NICK) values(C_BBSH_HC_ID_SEQ.nextval, 1,'º´¿øÈÄ±â´ñ±Û1', 'º°Äª1');
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of C_BBSH
+insert into C_BBSH (HC_ID, BBSH_ID , HC_CONTENT, USER_NICK) values(C_BBSH_HC_ID_SEQ.nextval, 1,'ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½1', 'ï¿½ï¿½Äª1');
 
 COMMIT;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC C_BBSH;
 
 ------------
---°Ô½ÃÆÇ: Ä¿¹Â´ÏÆ¼
+--ï¿½Ô½ï¿½ï¿½ï¿½: Ä¿ï¿½Â´ï¿½Æ¼
 ------------
 CREATE TABLE BBSC(
-  BBSC_ID            NUMBER,              --°Ô½Ã±Û ¹øÈ£(¼ø¹ø)
-  BC_TITLE           varchar2(150),       --±Û Á¦¸ñ
-  BC_CONTENT         clob,                --±Û ³»¿ë
-  PET_TYPE           varchar2(20),        --¹Ý·Áµ¿¹° Ç°Á¾
-  BC_ATTACH          BLOB,                --Ã·ºÎÆÄÀÏ
-  BC_HIT             NUMBER  default 0,   --Á¶È¸¼ö
-  BC_LIKE            NUMBER  default 0,   --ÁÁ¾Æ¿ä¼ö
-  BC_PUBLIC          CHAR(1) default 'N', --°Ô½Ã±Û °ø°³¿©ºÎ(°ø°³: Y, ºñ°ø°³: N)
-  BC_GUBUN           VARCHAR2(15) default 'B0102',      --°Ô½ÃÆÇ ±¸ºÐ(º´¿øÈÄ±â: B0101, Ä¿¹Â´ÏÆ¼: B0102)
-  USER_NICK          varchar2(30),        --ÀÏ¹ÝÈ¸¿ø ´Ð³×ÀÓ
-  BC_CDATE           timestamp default systimestamp,   --ÀÛ¼ºÀÏ
-  BC_UDATE           timestamp default systimestamp    --¼öÁ¤ÀÏ 
+  BBSC_ID            NUMBER,              --ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£(ï¿½ï¿½ï¿½ï¿½)
+  BC_TITLE           varchar2(150),       --ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  BC_CONTENT         clob,                --ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  PET_TYPE           varchar2(20),        --ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ Ç°ï¿½ï¿½
+  BC_ATTACH          BLOB,                --Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  BC_HIT             NUMBER  default 0,   --ï¿½ï¿½È¸ï¿½ï¿½
+  BC_LIKE            NUMBER  default 0,   --ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½
+  BC_PUBLIC          CHAR(1) default 'N', --ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½: Y, ï¿½ï¿½ï¿½ï¿½ï¿½: N)
+  BC_GUBUN           VARCHAR2(15) default 'B0102',      --ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½: B0101, Ä¿ï¿½Â´ï¿½Æ¼: B0102)
+  USER_NICK          varchar2(30),        --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½
+  BC_CDATE           timestamp default systimestamp,   --ï¿½Û¼ï¿½ï¿½ï¿½
+  BC_UDATE           timestamp default systimestamp    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table BBSC add Constraint BBSC_BBSC_ID_pk primary key (BBSC_ID);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table BBSC add constraint  BBSC_BC_GUBUN_fk
     foreign key(BC_GUBUN) references code(code_id);
     
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table BBSC modify BC_TITLE constraint BBSC_BC_TITLE_nn not null;
 alter table BBSC modify BC_CONTENT constraint BBSC_BC_CONTENT_nn not null;
 alter table BBSC modify BC_HIT constraint BBSC_BC_HIT_nn not null;
 alter table BBSC modify BC_LIKE constraint BBSC_BC_LIKE_nn not null;
 alter table BBSC modify BC_PUBLIC constraint BBSC_BC_PUBLIC_nn not null;
 alter table BBSC modify USER_NICK constraint BBSC_USER_NICK_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence BBSC_BBSC_ID_seq;
 
---»ùÇÃµ¥ÀÌÅÍ of BBSC
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of BBSC
 insert into BBSC (BBSC_ID , BC_TITLE, BC_CONTENT, PET_TYPE, BC_PUBLIC, BC_GUBUN, USER_NICK)
-    values(BBSC_BBSC_ID_seq.nextval, 'Ä¿¹Â´ÏÆ¼Á¦¸ñ1', 'Ä¿¹Â´ÏÆ¼º»¹®1', '°í¾çÀÌ', 'N', 'B0102', 'º°Äª1');
+    values(BBSC_BBSC_ID_seq.nextval, 'Ä¿ï¿½Â´ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½1', 'Ä¿ï¿½Â´ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'N', 'B0102', 'ï¿½ï¿½Äª1');
 
 COMMIT;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC BBSC;
 
 ------------
---´ñ±Û: Ä¿¹Â´ÏÆ¼
+--ï¿½ï¿½ï¿½: Ä¿ï¿½Â´ï¿½Æ¼
 ------------
 CREATE TABLE C_BBSC(
-  CC_ID              NUMBER,          --´ñ±Û ¹øÈ£(¼ø¹ø)
-  BBSC_ID            NUMBER,          --°Ô½Ã±Û ¹øÈ£
-  CC_CONTENT         varchar2(1500),  --´ñ±Û ³»¿ë
-  USER_NICK          varchar2(30),    --ÀÏ¹ÝÈ¸¿ø ´Ð³×ÀÓ
-  CC_CDATE           timestamp default systimestamp,   --ÀÛ¼ºÀÏ
-  CC_UDATE           timestamp default systimestamp    --¼öÁ¤ÀÏ 
+  CC_ID              NUMBER,          --ï¿½ï¿½ï¿½ ï¿½ï¿½È£(ï¿½ï¿½ï¿½ï¿½)
+  BBSC_ID            NUMBER,          --ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£
+  CC_CONTENT         varchar2(1500),  --ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+  USER_NICK          varchar2(30),    --ï¿½Ï¹ï¿½È¸ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½
+  CC_CDATE           timestamp default systimestamp,   --ï¿½Û¼ï¿½ï¿½ï¿½
+  CC_UDATE           timestamp default systimestamp    --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 );
---±âº»Å°»ý¼º
+--ï¿½âº»Å°ï¿½ï¿½ï¿½ï¿½
 alter table C_BBSC add Constraint C_BBSC_CC_ID_pk primary key (CC_ID);
---¿Ü·¡Å°
+--ï¿½Ü·ï¿½Å°
 alter table C_BBSC add constraint  C_BBSC_BBSC_ID_fk
     foreign key(BBSC_ID) references BBSC(BBSC_ID);
 
---Á¦¾àÁ¶°Ç
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 alter table C_BBSC modify BBSC_ID constraint C_BBSC_BBSC_ID_nn not null;
 alter table C_BBSC modify CC_CONTENT constraint C_BBSC_CC_CONTENT_nn not null;
 alter table C_BBSC modify USER_NICK constraint C_BBSC_USER_NICK_nn not null;
--- not null Á¦¾àÁ¶°ÇÀº add ´ë½Å modify ¸í·É¹® »ç¿ë
+-- not null ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add ï¿½ï¿½ï¿½ modify ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½
 
---½ÃÄö½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create sequence C_BBSC_CC_ID_SEQ;
 
---»ùÇÃµ¥ÀÌÅÍ of C_BBSC
-insert into C_BBSC (CC_ID, BBSC_ID , CC_CONTENT, USER_NICK) values(C_BBSC_CC_ID_SEQ.nextval, 1, 'Ä¿¹Â´ÏÆ¼´ñ±Û1', 'º°Äª1');
+--ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ of C_BBSC
+insert into C_BBSC (CC_ID, BBSC_ID , CC_CONTENT, USER_NICK) values(C_BBSC_CC_ID_SEQ.nextval, 1, 'Ä¿ï¿½Â´ï¿½Æ¼ï¿½ï¿½ï¿½1', 'ï¿½ï¿½Äª1');
 
 COMMIT;
 
---Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 DESC C_BBSC;
