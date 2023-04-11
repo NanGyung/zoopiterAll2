@@ -448,7 +448,6 @@ dialog li {
 /* 펫오너 가입, 펫병원 가입 버튼 클릭영역 */
 .joinbox a{
   display: inline-block;
-  width: 100%;
 }
 
 .scroll-boxs {

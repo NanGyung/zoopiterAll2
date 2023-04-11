@@ -311,3 +311,93 @@ $loginBtn.addEventListener('click', e => {
     alert('회원가입 양식에 맞게 입력해 주세요');
   }
 });
+
+
+  //사업자상태확인
+  const $chkBtn = document.getElementById('chkBtn');
+  $chkBtn.addEventListener('click',businessNumberChk_h,false);
+
+  //사업자진위확인
+  const $chkBtn2 = document.getElementById('chkBtn2');
+  $chkBtn2.addEventListener('click',businessTrulyChk_h,false);
+  const businessTrulyRequestParm = {};
+
+
+  //사업자 상태확인
+  function businessNumberChk_h(e){
+    const key = 'CwhZlDHVL7Ssq0ptBW7k3Z3ugzvVZIXlabaSyyRa%2B9gpMacCPAqpO8R7HuOyUbHVw332uGhgU7a8gWQzUJ8Zeg%3D%3D';
+    const returnType = 'JSON';
+    const url =  `http://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=${key}&returnType=${returnType}`;
+    const businessNm = document.getElementById('businessNm');
+    //const payLoad = JSON.parse(`{"b_no": [${businessNm.value} ] }`);
+    //const payLoad = { "b_no": [businessNm.value] };
+    const payLoad = { "b_no": [businessNm.value] };
+    //1)상태결과
+    const businessStatusChk = (res) => {
+      console.log(res);
+      if(res.status_code == 'OK'){
+        switch(res.data[0].b_stt_cd){ //납세자 상태
+          case "01": //계속사업자
+            console.log('계속');
+            document.querySelector('.item.item2').classList.remove('hidden');
+
+            //진위확인 파라미터
+            businessTrulyRequestParm.b_no = res.data[0].b_no;  //사업자 등록번호
+
+            break;
+          case "02": //휴업자
+            break;
+          case "03": //폐업자
+            break;
+          default :
+            throw new Error(`${res.data[0].tax_type}`);
+        }
+      }else{
+        throw new Error(`${res.description}`);
+      }
+    }
+
+    ajax.post(url,payLoad)
+      .then(res=>res.json())
+      .then(res=>businessStatusChk(res))
+      .catch(err=>console.log(err.message));
+  }
+
+  //사업자 진위확인
+  function businessTrulyChk_h(e) {
+    const key = 'CwhZlDHVL7Ssq0ptBW7k3Z3ugzvVZIXlabaSyyRa%2B9gpMacCPAqpO8R7HuOyUbHVw332uGhgU7a8gWQzUJ8Zeg%3D%3D';
+    const returnType = 'JSON';
+    const url =  `http://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=${key}&returnType=${returnType}`;
+    const $start_dt = document.getElementById('start_dt');
+    const $p_nm = document.getElementById('p_nm');
+    const payLoad = {
+      businesses : [
+        { ...businessTrulyRequestParm,
+          start_dt : $start_dt.value,
+          p_nm : $p_nm.value
+        }
+      ]
+    };
+    console.log(payLoad);
+    const businessStatusChk = res => {
+      console.log(res);
+      if(res.status_code == 'OK'){
+        switch(res.data[0].valid){
+          case "01":  //Valid  유효
+            console.log('유효한 사업자')
+            break;
+          case "02":  //Invalid
+
+            throw new Error(`${res.data[0].valid_msg}`);
+            break;
+        }
+      }else{
+        throw new Error(`${res.description}`);
+      }
+    }
+    ajax.post(url,payLoad)
+      .then(res=>res.json())
+      .then(res=>businessStatusChk(res))
+      .catch(err=>console.log(err.message));
+
+  }
