@@ -97,6 +97,16 @@ main form input {
 }
 
 /* 회원가입 양식 member_signup */
+/* 일반 회원가입 컨텐츠 영역 */
+.container.signup-container{
+  height: 100%;
+}
+
+/* 병원 회원가입 컨텐츠 영역 */
+.container.signup2-container {
+  height: 100%;
+}
+
 .joinForm form{
   display: flex;
   flex-direction: column;
@@ -115,16 +125,37 @@ main form input {
 }
 
 /* 로그인페이지 member_login */
+/* 로그인 컨테이너 영역 */
+.container.login-container {
+  height: 100vh;
+}
+
 /* 로그인 버튼 */
 #login {
   width: 100%;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
   padding: 6px;
   border: 1px solid var(--color-main-point);
   border-radius: 2rem;
   background-color: var(--color-main-point);
   color: var(--color-background);
   font-weight: bold;
+}
+/* 회원가입 버튼 */
+#signupBtn {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--color-grey2);
+  border-radius: 2rem;
+  background-color: var(--color-grey2);
+  color: var(--color-background);
+  font-weight: bold;
+}
+/* 회원가입 버튼 클릭영역 */
+#signupBtn a{
+  display: inline-block;
+  width: 100%;
 }
 
 .loginForm form{
@@ -149,6 +180,7 @@ main form input[type='password' i] {
 input:focus {
   outline: none;
 }
+
 
 /* 아이디 찾기, 비밀번호찾기 영역 */
 .findUser__menu {
