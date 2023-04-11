@@ -99,7 +99,6 @@ public class MemberSVCImpl implements MemberSVC {
   }
 
   /**
-<<<<<<< HEAD
    * @param userNick 닉네임
    * @return
    */
@@ -109,8 +108,6 @@ public class MemberSVCImpl implements MemberSVC {
   }
 
   /**
-=======
->>>>>>> da5ce351b86ee6c962102094e12e181cba872639
    * 로그인
    *
    * @param userId 아이디

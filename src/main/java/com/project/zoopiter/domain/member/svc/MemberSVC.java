@@ -61,7 +61,6 @@ public interface MemberSVC {
   boolean isExistId(String userId);
 
   /**
-<<<<<<< HEAD
    * 회원유무
    * @param userNick 닉네임
    * @return
@@ -69,8 +68,6 @@ public interface MemberSVC {
   boolean isExistNick(String userNick);
 
   /**
-=======
->>>>>>> da5ce351b86ee6c962102094e12e181cba872639
    * 로그인
    * @param userId 아이디
    * @param userPw 비밀번호
