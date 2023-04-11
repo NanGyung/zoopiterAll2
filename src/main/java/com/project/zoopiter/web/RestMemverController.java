@@ -1,5 +1,6 @@
 package com.project.zoopiter.web;
 
+import com.project.zoopiter.domain.entity.Member;
 import com.project.zoopiter.domain.member.svc.MemberSVC;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,18 @@ public class RestMemverController {
         //아이디 검증
         boolean exist = memberSVC.isExistEmail(email);
         res = RestResponse.createRestResponse("00","성공", exist);
+
+        return res;
+    }
+
+    @ResponseBody
+    @PostMapping("/signup1")
+    public RestResponse<Object> signupSave(@RequestBody Member member){
+        RestResponse<Object> res = null;
+
+        //회원기입
+        Member member2 = memberSVC.save(member);
+        res = RestResponse.createRestResponse("00","성공",member2);
 
         return res;
     }
