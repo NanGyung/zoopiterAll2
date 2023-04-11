@@ -190,5 +190,15 @@ public class MemberDAOImplTest {
     Assertions.assertThat(member.isPresent()).isFalse();
   }
 
+  @Test
+  @DisplayName("비밀번호찾기")
+  void isExistByEmailAndId(){
+    boolean isExist = memberDAO.isExistByEmailAndId("rhrnakaktdidrod0926@gmail.com", "test33");
+    Assertions.assertThat(isExist).isTrue();
+
+//    isExist = memberDAO.isExistByEmailAndId("ynangyung97@gmail.com", "test98");
+//    Assertions.assertThat(isExist).isFalse();
+  }
+
 
   }

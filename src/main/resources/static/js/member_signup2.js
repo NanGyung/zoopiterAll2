@@ -1,3 +1,5 @@
+import { ajax } from '/js/ajax.js';
+
 const $id = document.getElementById('id');
 const $pw = document.getElementById('pw');
 const $pwCheck = document.getElementById('pwCheck');
@@ -11,6 +13,29 @@ const $errPwCheck = document.querySelector('.err.pwCheck');
 const $errEmail = document.querySelector('.err.email');
 const $errEmailCheck = document.querySelector('.err.emailCheck');
 
+//아이디 중복체크
+const chkId = res => {
+  if (res.header.rtcd == '00') {
+    if (res.data) {
+      $errId.style = 'color : red';
+      $errId.textContent = '사용중인 아이디 입니다.';
+    } else {
+      $errId.style = 'color : green';
+      $errId.textContent = '사용가능한 아이디 입니다.';
+    }
+  } else {
+    $errId.textContent = `${res.header.rtmsg}`;
+  }
+};
+
+const chkId_h = () => {
+  const url = `/api/members/id?id=${$id.value}`;
+  ajax
+    .get(url)
+    .then(res => res.json())
+    .then(chkId) //res=>chkEmail(res)
+    .catch(console.error); //err=>console.error(err)
+};
 
 //아이디
 $id.addEventListener('keydown', e => {
@@ -27,18 +52,21 @@ $id.addEventListener('keydown', e => {
   if (e.key == 'Enter') {
     if (/[^A-Za-z0-9]/.test(input)) {
       $errId.classList.remove('hidden');
+      $errId.style = 'color : red';
       $errId.textContent = '* 영문 숫자만 입력 가능합니다.';
       $id.focus();
       return;
     }
     if (lenOfInput == 0) {
       $errId.classList.remove('hidden');
+      $errId.style = 'color : red';
       $errId.textContent = '* 아이디를 입력해 주세요.';
       $id.focus();
       $id.value = '';
     } else {
-      $errId.classList.add('hidden');
+      //      $errId.classList.add('hidden');
       // $id.value = input;
+      chkId_h();
       $pw.focus();
     }
     return;
@@ -51,15 +79,18 @@ $id.addEventListener('blur', e => {
 
   if (/[^A-Za-z0-9]/.test(input)) {
     $errId.classList.remove('hidden');
+    $errId.style = 'color : red';
     $errId.textContent = '* 영문 숫자만 입력 가능합니다.';
     return;
   }
   if (lenOfInput == 0) {
     $errId.classList.remove('hidden');
+    $errId.style = 'color : red';
     $errId.textContent = '* 아이디을 입력해 주세요.';
     $id.value = '';
   } else {
-    $errId.classList.add('hidden');
+    //    $errId.classList.add('hidden');
+    chkId_h();
     // $id.value = input;
   }
   return;
@@ -121,6 +152,14 @@ $pw.addEventListener('blur', e => {
   return;
 });
 
+$pwCheck.addEventListener('focus', e => {
+  if ($pw.value == null) {
+    $pw.focus();
+  } else if (!$errPw.classList.contains('hidden')) {
+    $pw.focus();
+  }
+});
+
 //비밀번호 확인
 $pwCheck.addEventListener('input', e => {
   const input = $pwCheck.value;
@@ -130,12 +169,12 @@ $pwCheck.addEventListener('input', e => {
   if (lenOfInput != 0) {
     if (input == inputChk) {
       $errPw.classList.add('hidden');
-      $errPwCheck.textContent = '비밀번호가 일치합니다';
       $errPwCheck.style = 'color : green';
+      $errPwCheck.textContent = '비밀번호가 일치합니다';
     } else {
       $errPwCheck.classList.remove('hidden');
-      $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
       $errPwCheck.style = 'color : red';
+      $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
     }
   }
   return;
@@ -163,6 +202,30 @@ $pwCheck.addEventListener('keydown', e => {
   return;
 });
 
+//이메일 중복체크
+const chkEmail = res => {
+  if (res.header.rtcd == '00') {
+    if (res.data) {
+      $errEmail.style = 'color : red';
+      $errEmail.textContent = '사용중인 이메일 입니다.';
+    } else {
+      $errEmail.style = 'color : green';
+      $errEmail.textContent = '사용가능한 이메일 입니다.';
+    }
+  } else {
+    $errEmail.textContent = `${res.header.rtmsg}`;
+  }
+};
+
+const chkEmail_h = () => {
+  const url = `/api/members/email?email=${email.value}`;
+  ajax
+    .get(url)
+    .then(res => res.json())
+    .then(chkEmail) //res=>chkEmail(res)
+    .catch(console.error); //err=>console.error(err)
+};
+
 //이메일
 $email.addEventListener('keydown', e => {
   const input = $email.value;
@@ -179,16 +242,19 @@ $email.addEventListener('keydown', e => {
   if (e.key == 'Enter') {
     if (lenOfInput == 0) {
       $errEmail.classList.remove('hidden');
+      $errEmail.style = 'color : red';
       $errEmail.textContent = '* 이메일를 입력해 주세요.';
       $email.focus();
       $email.value = '';
     } else if (!emailRegex.test(input)) {
       $errEmail.classList.remove('hidden');
+      $errEmail.style = 'color : red';
       $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
       $email.focus();
     } else {
-      $errEmail.classList.add('hidden');
-      $email.value = input;
+      //      $errEmail.classList.add('hidden');
+      //      $email.value = input;
+      chkEmail_h();
       $emailCheck.focus();
     }
     return;
@@ -202,20 +268,46 @@ $email.addEventListener('blur', e => {
 
   if (lenOfInput == 0) {
     $errEmail.classList.remove('hidden');
+    $errEmail.style = 'color : red';
     $errEmail.textContent = '* 이메일를 입력해 주세요.';
     $email.value = '';
   } else if (!emailRegex.test(input)) {
     $errEmail.classList.remove('hidden');
+    $errEmail.style = 'color : red';
     $errEmail.textContent = '* 이메일 양식에 맞게 입력해 주세요.';
   } else {
-    $errEmail.classList.add('hidden');
-    $email.value = input;
+    //    $errEmail.classList.add('hidden');
+    //    $email.value = input;
+    chkEmail_h();
   }
   return;
 });
 
+//member 내보내기
+//const member_h = () => {
+//  const url = `/api/members/signup2`;
+//  const payLoad = {
+//    userId: $id.value,
+//    userPw: $pw.value,
+//    userEmail: $email.value,
+//  };
+//  ajax
+//    .post(url, payLoad)
+//    .then(res => res.json())
+//    .catch(console.error); //err=>console.error(err)
+//};
+
 const $loginBtn = document.getElementById('loginBtn');
 const $loginPopup = document.getElementById('loginPopup');
 $loginBtn.addEventListener('click', e => {
-  $loginPopup.showModal();
+  if (
+    $errId.style.color === 'green' &&
+    $errEmail.style.color === 'green' &&
+    $errPwCheck.style.color === 'green'
+  ) {
+    //    member_h();
+    $loginPopup.showModal();
+  } else {
+    alert('회원가입 양식에 맞게 입력해 주세요');
+  }
 });

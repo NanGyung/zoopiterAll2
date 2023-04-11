@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: calc(122.4vh - 220px);
+  /* height: max-content; */
   min-height: 500px;
   background-color: var(--color-background);
   padding: 30px;
@@ -41,6 +41,11 @@
 
 .hd, .fg-banner, .container, .ft{
   grid-area: mn;
+}
+
+/* 약관동의 메인 컨텐츠 감싸는 영역 */
+.contents-wrap{
+  height: 100%;
 }
 
 /* 약관동의 member_join */
@@ -52,9 +57,18 @@
   opacity: .5;
 }
 
+/* 회원가입 양식 기본 안내문구 */
+.information {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: .5;
+}
+
 
 /* member_signup 회원가입양식, member_login 로그인 공통 레이아웃 */
 main section {
+    grid-area: mn;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -83,6 +97,16 @@ main form input {
 }
 
 /* 회원가입 양식 member_signup */
+/* 일반 회원가입 컨텐츠 영역 */
+.container.signup-container{
+  height: 100%;
+}
+
+/* 병원 회원가입 컨텐츠 영역 */
+.container.signup2-container {
+  height: 100%;
+}
+
 .joinForm form{
   display: flex;
   flex-direction: column;
@@ -101,16 +125,37 @@ main form input {
 }
 
 /* 로그인페이지 member_login */
+/* 로그인 컨테이너 영역 */
+.container.login-container {
+  height: 100vh;
+}
+
 /* 로그인 버튼 */
 #login {
   width: 100%;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
   padding: 6px;
   border: 1px solid var(--color-main-point);
   border-radius: 2rem;
   background-color: var(--color-main-point);
   color: var(--color-background);
   font-weight: bold;
+}
+/* 회원가입 버튼 */
+#signupBtn {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--color-grey2);
+  border-radius: 2rem;
+  background-color: var(--color-grey2);
+  color: var(--color-background);
+  font-weight: bold;
+}
+/* 회원가입 버튼 클릭영역 */
+#signupBtn a{
+  display: inline-block;
+  width: 100%;
 }
 
 .loginForm form{
@@ -136,13 +181,14 @@ input:focus {
   outline: none;
 }
 
+
 /* 아이디 찾기, 비밀번호찾기 영역 */
 .findUser__menu {
   display: flex;
   width: 100%;
   height: 50px;
   background-color: inherit;
-}
+}   
 
 .findUser__menu--ul {
   display: flex;
@@ -385,7 +431,8 @@ dialog li {
 
 #mainTitle{
   display: flex;
-  margin: 1.2rem 0;
+  justify-content: center;
+  margin: 2rem 0;
 }
 #mainTitle i{
   color: var(--color-main-point2);
@@ -394,8 +441,14 @@ dialog li {
 
 .joinbox{
   display: flex;
-  margin-top: 1.6rem;
+  margin: 4rem 0;
   background-color: var(--color-background);
+}
+
+/* 펫오너 가입, 펫병원 가입 버튼 클릭영역 */
+.joinbox a{
+  display: inline-block;
+  width: 100%;
 }
 
 .scroll-boxs {
@@ -416,7 +469,7 @@ dialog li {
 
 .scroll-boxs.box2{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .box2__info1{
   margin-right: 10rem;

@@ -3,7 +3,6 @@ package com.project.zoopiter.domain.bbsc.dao;
 import com.project.zoopiter.domain.entity.Bbsc;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BbscDAO {
   /**
@@ -24,14 +23,14 @@ public interface BbscDAO {
    * @param petType 펫태그(강아지,고양이,소동물,기타)
    * @return
    */
-  Optional<Bbsc> findByPetType(String petType);
+  List<Bbsc> findByPetType(String petType);
 
   /**
    * 상세조회
    * @param id 게시글 번호
    * @return
    */
-  Bbsc findByBbscId(Long id);
+  Bbsc  findByBbscId(Long id);
 
   /**
    * 삭제

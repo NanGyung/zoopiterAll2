@@ -83,4 +83,11 @@ public interface MemberDAO {
    */
   Optional<String> findIdByEmail(String userEmail);
 
+  /**
+   * 비밀번호 찾기
+   * @param email 이메일
+   * @return boolean
+   */
+  boolean isExistByEmailAndId(String userEmail, String userId);
+
 }

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @ToString
 @Slf4j
@@ -40,7 +39,7 @@ public class BbscDAOImpl implements BbscDAO{
     KeyHolder keyHolder = new GeneratedKeyHolder();
     SqlParameterSource param = new BeanPropertySqlParameterSource(bbsc);
 
-    template.update(sql.toString(),param, keyHolder, new String[]{"bbscId"});
+    template.update(sql.toString(),param, keyHolder, new String[]{"bbsc_id"});
     long bbscId = keyHolder.getKey().longValue(); //게시글 번호
 
     return bbscId;
@@ -66,20 +65,15 @@ public class BbscDAOImpl implements BbscDAO{
    * @return
    */
   @Override
-  public Optional<Bbsc> findByPetType(String petType) {
+  public List<Bbsc> findByPetType(String petType) {
     StringBuffer sql = new StringBuffer();
-    sql.append("select * from where pet_type = :petType ");
-    try{
-      Map<String, String> param = Map.of("petType", petType);
-      Bbsc bbsc = template.queryForObject(
-          sql.toString(),
-          param,
-          BeanPropertyRowMapper.newInstance(Bbsc.class)
-      );
-      return Optional.of(bbsc);
-    }catch (EmptyResultDataAccessException e){
-      return Optional.empty();
-    }
+    sql.append("select * from bbsc where pet_type = :petType ");
+
+    Map<String, String> param = Map.of("petType", petType);
+
+    List<Bbsc> findLists = template.query(sql.toString(), param, new BeanPropertyRowMapper<>(Bbsc.class));
+
+    return findLists;
   }
 
   /**
@@ -90,7 +84,21 @@ public class BbscDAOImpl implements BbscDAO{
    */
   @Override
   public Bbsc findByBbscId(Long id) {
-    return null;
+    StringBuffer sql = new StringBuffer();
+    sql.append("select * from bbsc where bbsc_id = :bbscId ");
+
+    Bbsc bbscItem = null;
+    try{
+      Map<String, Long> param = Map.of("bbscId", id);
+      bbscItem = template.queryForObject(
+          sql.toString(),
+          param,
+          BeanPropertyRowMapper.newInstance(Bbsc.class)
+      );
+    }catch (EmptyResultDataAccessException e){
+      bbscItem = null;
+    }
+    return bbscItem;
   }
 
   /**
@@ -101,7 +109,8 @@ public class BbscDAOImpl implements BbscDAO{
    */
   @Override
   public int deleteByBbscId(Long id) {
-    return 0;
+    String sql = "delete from bbsc where bbsc_id = :bbscId ";
+    return template.update(sql,Map.of("bbscId",id));
   }
 
   /**
@@ -113,7 +122,13 @@ public class BbscDAOImpl implements BbscDAO{
    */
   @Override
   public int updateByBbscId(Long id, Bbsc bbsc) {
-    return 0;
+    StringBuffer sql = new StringBuffer();
+    sql.append("update bbsc ");
+    sql.append("set bc_title = :bcTitle, bc_content= :bcContent, pet_type = :petType, bc_public = :bcPublic, bc_udate = systimestamp ");
+    sql.append("where bbsc_id = :bbscId ");
+    SqlParameterSource param = new BeanPropertySqlParameterSource(bbsc);
+
+    return template.update(sql.toString(), param);
   }
 
   /**
@@ -124,6 +139,12 @@ public class BbscDAOImpl implements BbscDAO{
    */
   @Override
   public int increaseHitCount(Long id) {
-    return 0;
+    StringBuffer sql = new StringBuffer();
+    sql.append("update bbs  ");
+    sql.append("set hit = hit + 1 ");
+    sql.append("where bbs_id = :id ");
+    SqlParameterSource param = new BeanPropertySqlParameterSource(id);
+
+    return template.update(sql.toString(), param);
   }
 }
