@@ -33,7 +33,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+<<<<<<< HEAD
   /* height: max-content; */
+=======
+  height: calc(122.4vh - 220px);
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   min-height: 500px;
   background-color: var(--color-background);
   padding: 30px;
@@ -43,11 +47,14 @@
   grid-area: mn;
 }
 
+<<<<<<< HEAD
 /* 약관동의 메인 컨텐츠 감싸는 영역 */
 .contents-wrap{
   height: 100%;
 }
 
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 /* 약관동의 member_join */
 #mainTitle a {
   width: 100%;
@@ -57,6 +64,7 @@
   opacity: .5;
 }
 
+<<<<<<< HEAD
 /* 회원가입 양식 기본 안내문구 */
 .information {
   margin: 4px 0;
@@ -69,6 +77,11 @@
 /* member_signup 회원가입양식, member_login 로그인 공통 레이아웃 */
 main section {
     grid-area: mn;
+=======
+
+/* member_signup 회원가입양식, member_login 로그인 공통 레이아웃 */
+main section {
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -97,6 +110,7 @@ main form input {
 }
 
 /* 회원가입 양식 member_signup */
+<<<<<<< HEAD
 /* 일반 회원가입 컨텐츠 영역 */
 .container.signup-container{
   height: 100%;
@@ -107,6 +121,8 @@ main form input {
   height: 100%;
 }
 
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 .joinForm form{
   display: flex;
   flex-direction: column;
@@ -125,6 +141,7 @@ main form input {
 }
 
 /* 로그인페이지 member_login */
+<<<<<<< HEAD
 /* 로그인 컨테이너 영역 */
 .container.login-container {
   height: 100vh;
@@ -135,6 +152,12 @@ main form input {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 10px;
+=======
+/* 로그인 버튼 */
+#login {
+  width: 100%;
+  margin: 20px 0;
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   padding: 6px;
   border: 1px solid var(--color-main-point);
   border-radius: 2rem;
@@ -142,6 +165,7 @@ main form input {
   color: var(--color-background);
   font-weight: bold;
 }
+<<<<<<< HEAD
 /* 회원가입 버튼 */
 #signupBtn {
   width: 100%;
@@ -157,6 +181,8 @@ main form input {
   display: inline-block;
   width: 100%;
 }
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 
 .loginForm form{
   width: 280px;
@@ -181,14 +207,21 @@ input:focus {
   outline: none;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 /* 아이디 찾기, 비밀번호찾기 영역 */
 .findUser__menu {
   display: flex;
   width: 100%;
   height: 50px;
   background-color: inherit;
+<<<<<<< HEAD
 }   
+=======
+}
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 
 .findUser__menu--ul {
   display: flex;
@@ -431,8 +464,12 @@ dialog li {
 
 #mainTitle{
   display: flex;
+<<<<<<< HEAD
   justify-content: center;
   margin: 2rem 0;
+=======
+  margin: 1.2rem 0;
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 }
 #mainTitle i{
   color: var(--color-main-point2);
@@ -441,6 +478,7 @@ dialog li {
 
 .joinbox{
   display: flex;
+<<<<<<< HEAD
   margin: 4rem 0;
   background-color: var(--color-background);
 }
@@ -451,6 +489,12 @@ dialog li {
   width: 100%;
 }
 
+=======
+  margin-top: 1.6rem;
+  background-color: var(--color-background);
+}
+
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 .scroll-boxs {
   display: flex;
   margin: 1.2rem 0;
@@ -469,7 +513,11 @@ dialog li {
 
 .scroll-boxs.box2{
   display: flex;
+<<<<<<< HEAD
   justify-content: center;
+=======
+  justify-content: space-around;
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
 }
 .box2__info1{
   margin-right: 10rem;

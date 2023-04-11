@@ -51,7 +51,10 @@ body {
 .container {
   grid-area: mn;
   width: 100%;
+<<<<<<< HEAD
   height: 100%;
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   padding: 20px 0;
   box-sizing: border-box;
   padding-bottom: 0;

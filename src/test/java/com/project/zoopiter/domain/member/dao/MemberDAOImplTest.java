@@ -138,6 +138,7 @@ public class MemberDAOImplTest {
     Assertions.assertThat(exist).isFalse();
   }
 
+<<<<<<< HEAD
   @Test
   @Order(11)
   @DisplayName("닉네임유무1")
@@ -159,6 +160,10 @@ public class MemberDAOImplTest {
 
     @Test
     @Order(13)
+=======
+    @Test
+    @Order(11)
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
     @DisplayName("로그인")
     void login(){
       String userId="test1";
@@ -175,7 +180,11 @@ public class MemberDAOImplTest {
     }
 
   @Test
+<<<<<<< HEAD
   @Order(14)
+=======
+  @Order(12)
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   @DisplayName("이메일로 아이디 찾기")
   void findIdByEmail(){
     String userEmail="test1@gamil.com";
@@ -190,5 +199,8 @@ public class MemberDAOImplTest {
     Assertions.assertThat(member.isPresent()).isFalse();
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   }

@@ -447,6 +447,10 @@ CREATE TABLE BBSH(
   BH_HIT             NUMBER default 0,--조회수
   BH_GUBUN           VARCHAR2(15) default 'B0101',      --게시판 구분(병원후기: B0101, 커뮤니티: B0102)
   USER_NICK          varchar2(30),    --일반회원 닉네임
+<<<<<<< HEAD
+=======
+  BH_GRADE           NUMBER,          --평점(별점)
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
   BH_CDATE           timestamp default systimestamp,   --작성일
   BH_UDATE           timestamp default systimestamp    --수정일 
 );

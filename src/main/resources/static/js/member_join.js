@@ -7,7 +7,11 @@ const scrollCheckbox = document.querySelector('#scroll-checkbox');
 scrollBox.addEventListener('scroll', () => {
     if (
         scrollBox.scrollTop + scrollBox.clientHeight >=
+<<<<<<< HEAD
         scrollBox.scrollHeight -1
+=======
+        scrollBox.scrollHeight
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
     ) {
         scrollCheckbox.checked = true;
         scrollCheckbox.disabled = false;
@@ -30,7 +34,11 @@ const scrollCheckbox2 = document.querySelector('#scroll-checkbox2');
 scrollBox2.addEventListener('scroll', () => {
     if (
         scrollBox2.scrollTop + scrollBox2.clientHeight >=
+<<<<<<< HEAD
         scrollBox2.scrollHeight -1
+=======
+        scrollBox2.scrollHeight
+>>>>>>> da5ce351b86ee6c962102094e12e181cba872639
     ) {
         scrollCheckbox2.checked = true;
         scrollCheckbox2.disabled = false;
