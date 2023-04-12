@@ -34,7 +34,7 @@ public class PetInfoSVCImpl implements PetInfoSVC{
   }
 
   @Override
-  public List<PetInfo> findAll() {
-    return petInfoDAO.findAll();
+  public List<PetInfo> findAll(String userId) {
+    return petInfoDAO.findAll(userId);
   }
 }

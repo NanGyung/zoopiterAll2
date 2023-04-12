@@ -40,7 +40,7 @@ public interface PetInfoDAO {
    *
    * @return
    */
-  List<PetInfo> findAll();
+  List<PetInfo> findAll(String userId);
 
   // 회원유무
 

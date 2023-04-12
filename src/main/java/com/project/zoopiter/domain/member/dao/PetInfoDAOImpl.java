@@ -137,15 +137,19 @@ public class PetInfoDAOImpl implements PetInfoDAO{
    * @return
    */
   @Override
-  public List<PetInfo> findAll() {
+  public List<PetInfo> findAll(String userId) {
     StringBuffer sb = new StringBuffer();
     sb.append("select * ");
     sb.append("  from pet_info");
+    sb.append(" where user_id = :userId");
 
+    Map<String, String> param = Map.of("userId", userId);
     List<PetInfo> list = template.query(
         sb.toString(),
+        param,
         BeanPropertyRowMapper.newInstance(PetInfo.class)
     );
+    log.info("list={}", list);
     return list;
   }
 }

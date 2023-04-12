@@ -10,7 +10,7 @@ public interface PetInfoSVC {
   String saveInfo(PetInfo petInfo);
 
   // 조회
-  Optional<PetInfo> findInfo(Long memberId);
+  Optional<PetInfo> findInfo(Long id);
 
   // 수정
   int updateInfo (Long petNum, PetInfo petInfo);
@@ -18,5 +18,5 @@ public interface PetInfoSVC {
   // 삭제
   int deleteInfo(Long petNum);
   // 목록
-  List<PetInfo> findAll();
+  List<PetInfo> findAll(String userId);
 }

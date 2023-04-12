@@ -82,10 +82,10 @@ function modify() {
   });
 }
 
-function petModify() {
+function petModify({dataset}) {
   Swal.fire({
-    title: '수정완료 하시겠습니까?',
-    text: '작성하신 정보가 저장됩니다',
+    title: '수정페이지로 이동하시겠습니까?',
+    text: '등록한 반려동물정보를 수정하러 이동합니다',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#333',
@@ -94,7 +94,34 @@ function petModify() {
     cancelButtonText: '취소하기',
   }).then(result => {
     if (result.isConfirmed) {
-      location.replace('./mypage_main.html');
+        location.replace(`/mypage/${dataset.petNum}/edit`);
     }
   });
 }
+ /** 삭제 */
+  const $btn_del = document.getElementById('btn_del');
+
+  const btn_del = e => {
+    if(confirm('삭제 하시겠습니까?')){
+      globalThis.location.href = `/mypage/${petNum.value}/del`;
+    }
+  }
+  $btn_del.addEventListener('click',btn_del,false);
+
+// 반려동물 정보 추가(2개이상) 되면 이미지 슬라이드
+$(document).ready(function () {
+  const profileAreas = $('.profile-area');
+  const profileList = $('.profile-list__areas');
+  if (profileAreas.length > 2) {
+    // profile-area 태그가 2개 이상일 때
+    $('.profile-list__areas').slick({
+      // slick 라이브러리를 적용할 부분 선택자
+      slidesToShow: 2, // 한 화면에 보여줄 슬라이드 개수
+      slidesToScroll: 1, // 슬라이드 이동 시 이동할 슬라이드 개수
+      arrows: false,
+    });
+  } else {
+    profileList.css('width', '40%');
+    profileAreas.css('width', '70%');
+  }
+});
