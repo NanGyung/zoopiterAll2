@@ -78,7 +78,6 @@ class BbscDAOImplTest {
     bbsc.setBcContent("테스트본문2_수정");
     bbsc.setPetType("소동물");
     bbsc.setBcPublic("Y");
-//    bbsc.setBcUdate(LocalDateTime.parse(date));
 
     bbscDAO.updateByBbscId(2L, bbsc);
 

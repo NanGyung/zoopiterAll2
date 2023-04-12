@@ -149,11 +149,12 @@ public class BbscDAOImpl implements BbscDAO{
   @Override
   public int increaseHitCount(Long id) {
     StringBuffer sql = new StringBuffer();
-    sql.append("update bbs  ");
-    sql.append("set hit = hit + 1 ");
-    sql.append("where bbsc_id = :id ");
-//    SqlParameterSource param = new BeanPropertySqlParameterSource(id);
-    Map<String, Long> param = Map.of("id", id);
+    sql.append("update bbsc  ");
+    sql.append("set bc_hit = bc_hit + 1 ");
+    sql.append("where bbsc_id = :bbscId ");
+
+    Map<String, Long> param = Map.of("bbscId", id);
+
     return template.update(sql.toString(), param);
   }
 }
