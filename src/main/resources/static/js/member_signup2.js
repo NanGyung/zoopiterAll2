@@ -5,8 +5,9 @@ const $pw = document.getElementById('pw');
 const $pwCheck = document.getElementById('pwCheck');
 const $email = document.getElementById('email');
 const $emailCheck = document.getElementById('emailCheck');
+const $emailSendBtn = document.getElementById('emailSendBtn');
+const $emailSendBtn2 = document.getElementById('emailSendBtn2');
 
-const $errNickname = document.querySelector('.err.nickname');
 const $errId = document.querySelector('.err.id');
 const $errPw = document.querySelector('.err.pw');
 const $errPwCheck = document.querySelector('.err.pwCheck');
@@ -25,23 +26,26 @@ const chkId = res => {
     }
   } else {
     $errId.textContent = `${res.header.rtmsg}`;
-  }
+  };
+  return;
 };
 
 const chkId_h = () => {
+  $errId.style = 'color : grey';
+  $errId.textContent = '아이디 중복체크중 입니다.';
   const url = `/api/members/id?id=${$id.value}`;
   ajax
     .get(url)
     .then(res => res.json())
     .then(chkId) //res=>chkEmail(res)
     .catch(console.error); //err=>console.error(err)
+  return;
 };
 
 //아이디
 $id.addEventListener('keydown', e => {
   const input = $id.value;
   const lenOfInput = input.length;
-
   if (e.key === ' ') {
     e.preventDefault();
   }
@@ -67,14 +71,14 @@ $id.addEventListener('keydown', e => {
       //      $errId.classList.add('hidden');
       // $id.value = input;
       chkId_h();
-      $pw.focus();
-    }
+    };
     return;
-  }
+  };
+  return;
 });
 
 $id.addEventListener('blur', e => {
-  const input = $id.value.trim();
+  const input = $id.value;
   const lenOfInput = input.length;
 
   if (/[^A-Za-z0-9]/.test(input)) {
@@ -97,24 +101,24 @@ $id.addEventListener('blur', e => {
 });
 
 //비밀번호 확인 함수
-  const pwCheck_h = (e) => {
-    const input = $pwCheck.value;
-    const inputChk = $pw.value;
-    const lenOfInput = input.length;
+const pwCheck_h = e => {
+  const input = $pwCheck.value;
+  const inputChk = $pw.value;
+  const lenOfInput = input.length;
 
-    if (lenOfInput != 0) {
-      if (input == inputChk) {
-        $errPw.classList.add('hidden');
-        $errPwCheck.style = 'color : green';
-        $errPwCheck.textContent = '비밀번호가 일치합니다';
-      } else {
-        $errPwCheck.classList.remove('hidden');
-        $errPwCheck.style = 'color : red';
-        $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
-      }
+  if (lenOfInput != 0) {
+    if (input == inputChk) {
+      $errPw.classList.add('hidden');
+      $errPwCheck.style = 'color : green';
+      $errPwCheck.textContent = '비밀번호가 일치합니다';
+    } else {
+      $errPwCheck.classList.remove('hidden');
+      $errPwCheck.style = 'color : red';
+      $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
     }
-    return;
-  };
+  }
+  return;
+};
 
 //비밀번호
 $pw.addEventListener('keydown', e => {
@@ -149,6 +153,7 @@ $pw.addEventListener('keydown', e => {
     }
     return;
   }
+  return;
 });
 
 $pw.addEventListener('blur', e => {
@@ -178,12 +183,12 @@ $pwCheck.addEventListener('focus', e => {
     $pw.focus();
   } else if (!$errPw.classList.contains('hidden')) {
     $pw.focus();
-  }
+  };
+  return;
 });
 
-
 //비밀번호 확인
-$pwCheck.addEventListener('input',pwCheck_h);
+$pwCheck.addEventListener('input', pwCheck_h);
 
 //비밀번호 확인
 $pwCheck.addEventListener('keydown', e => {
@@ -219,7 +224,8 @@ const chkEmail = res => {
     }
   } else {
     $errEmail.textContent = `${res.header.rtmsg}`;
-  }
+  };
+  return;
 };
 
 const chkEmail_h = () => {
@@ -260,10 +266,13 @@ $email.addEventListener('keydown', e => {
       //      $errEmail.classList.add('hidden');
       //      $email.value = input;
       chkEmail_h();
-      $emailCheck.focus();
+      if ($errEmail.style.color === 'green') {
+        $emailCheck.focus();
+      }
     }
     return;
-  }
+  };
+  return;
 });
 
 $email.addEventListener('blur', e => {
@@ -285,6 +294,109 @@ $email.addEventListener('blur', e => {
     //    $email.value = input;
     chkEmail_h();
   }
+  return;
+});
+
+//이메일 인증 인풋 막기
+$emailCheck.addEventListener('keydown',e=>{
+      if (e.key == 'Enter') {
+        e.preventDefault();
+      };
+      return;
+});
+
+//이메일 인증 체크1
+const emailSend = res => {
+  if (res.header.rtcd == '00') {
+    if (res.data) {
+      $errEmailCheck.style = 'color : grey';
+      $errEmailCheck.textContent = res.data;
+    } else {
+      $errEmailCheck.style = 'color : red';
+      $errEmailCheck.textContent = '오류';
+    }
+  } else {
+    $errEmailCheck.textContent = `${res.header.rtmsg}`;
+  };
+  return;
+};
+
+const emailSendBtn_h = () => {
+  const url = `/api/members/emailChk?email=${email.value}`;
+  $errEmailCheck.textContent =
+    '이메일을 보내고 있습니다. 잠시만 기다려 주세요.';
+  document.getElementById('emailSendBtn').disabled = true;
+  ajax
+    .get(url)
+    .then(res => res.json())
+    .then(emailSend) //res=>chkEmail(res)
+    .then(e=>{
+      if($errEmailCheck.style.color === 'grey'){
+            $emailSendBtn.classList.add('hidden');
+            $emailSendBtn2.classList.remove('hidden');
+      }else{
+            document.getElementById('emailSendBtn').disabled = false;
+      };
+    })
+    .catch(console.error); //err=>console.error(err)
+  return;
+};
+
+$emailSendBtn.addEventListener('click', e => {
+  if ($errEmail.style.color != 'green') {
+    $errEmailCheck.style = 'color : red';
+    $errEmailCheck.textContent = '* 이메일을 양식에 맞게 입력해 주세요';
+    e.preventDefault();
+  } else if($errEmail.style.color === 'green') {
+    document.getElementById('email').disabled = true;
+    emailSendBtn_h();
+  };
+  return;
+});
+
+//이메일 인증 체크2
+const emailSend2 = res => {
+  if (res.header.rtcd == '00') {
+    if (res.data) {
+      $errEmailCheck.style = 'color : green';
+      $errEmailCheck.textContent = res.data;
+    } else {
+      $errEmailCheck.style = 'color : red';
+      $errEmailCheck.textContent = '오류';
+    }
+  } else if (res.header.rtcd == '01') {
+    $errEmailCheck.style = 'color : red';
+    $errEmailCheck.textContent = res.data;
+  } else {
+    $errEmailCheck.textContent = `${res.header.rtmsg}`;
+  };
+  return;
+};
+
+const emailSendBtn_h2 = e => {
+  const url = `/api/members/emailChk2?num=${emailCheck.value}`;
+  ajax
+    .get(url)
+    .then(res => res.json())
+    .then(emailSend2) //res=>chkEmail(res)
+    .then(e=>{
+    if($errEmailCheck.textContent=='인증성공'){
+      document.getElementById('emailCheck').disabled = true;
+      document.getElementById('emailSendBtn2').disabled = true;
+    };
+    })
+    .catch(console.error); //err=>console.error(err)
+    return;
+};
+
+$emailSendBtn2.addEventListener('click', e => {
+  const input = $emailCheck.value;
+  const lenOfInput = input.length;
+  if (lenOfInput == 0) {
+    e.preventDefault();
+  } else {
+    emailSendBtn_h2(e);
+  };
   return;
 });
 
@@ -419,7 +531,7 @@ $chkBtn2.addEventListener('click', (e) => {
 //member 내보내기
 const member_h = () => {
   const url = `/api/members/signup2`;
-  const name = "*병원* " + $b_nm.value.replace("(주)", "").replace("주식회사", "");
+  const name = "*병원*" + $b_nm.value.replace("(주)", "").replace("주식회사", "");
   const payLoad = {
     userId: $id.value,
     userPw: $pw.value,
@@ -441,7 +553,8 @@ $loginBtn.addEventListener('click', e => {
     $errId.style.color === 'green' &&
     $errEmail.style.color === 'green' &&
     $errPwCheck.style.color === 'green' &&
-    $numChk2.style.color === 'green'
+    $numChk2.style.color === 'green' &&
+    $errEmailCheck.style.color === 'green'
   ) {
     member_h();
     $loginPopup.showModal();
