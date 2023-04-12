@@ -14,6 +14,12 @@ public interface MemberDAO {
   Member save(Member member);
 
   /**
+   * 병원가입
+   * @param member 회원정보
+   * @return
+   */
+  Member save2(Member member);
+  /**
    * 회원정보수정
    * @param userId 아이디
    * @param member 회원정보
@@ -82,12 +88,5 @@ public interface MemberDAO {
    * @return
    */
   Optional<String> findIdByEmail(String userEmail);
-
-  /**
-   * 비밀번호 찾기
-   * @param email 이메일
-   * @return boolean
-   */
-  boolean isExistByEmailAndId(String userEmail, String userId);
 
 }

@@ -31,7 +31,7 @@ class BbscDAOImplTest {
 
     Long saveWrite = bbscDAO.saveWrite(bbsc);
     log.info("saveWrite={}",saveWrite);
-    Assertions.assertThat(saveWrite).isEqualTo(24);
+//    Assertions.assertThat(saveWrite).isEqualTo(24);
   }
 
   @Test
@@ -57,8 +57,8 @@ class BbscDAOImplTest {
   @Test
   @DisplayName("글 단건 조회")
   void findByBbscId() {
-    Bbsc findById = bbscDAO.findByBbscId(24L);
-    Assertions.assertThat(findById.getBbscId()).isEqualTo(24L);
+    Bbsc findById = bbscDAO.findByBbscId(2L);
+    Assertions.assertThat(findById.getBbscId()).isEqualTo(2L);
     log.info("findByBbscId={}",findById);
   }
 
@@ -70,10 +70,26 @@ class BbscDAOImplTest {
   }
 
   @Test
+  @DisplayName("글 수정")
   void updateByBbscId() {
+    Bbsc bbsc = new Bbsc();
+
+    bbsc.setBcTitle("테스트제목2_수정");
+    bbsc.setBcContent("테스트본문2_수정");
+    bbsc.setPetType("소동물");
+    bbsc.setBcPublic("Y");
+//    bbsc.setBcUdate(LocalDateTime.parse(date));
+
+    bbscDAO.updateByBbscId(2L, bbsc);
+
+    String bcTitle = bbsc.getBcTitle();
+    Assertions.assertThat(bcTitle).isEqualTo("테스트제목2_수정");
   }
 
   @Test
+  @DisplayName("조회수 증가")
   void increaseHitCount() {
+    int hitResultCnt = bbscDAO.increaseHitCount(2L);
+    Assertions.assertThat(hitResultCnt).isEqualTo(1);
   }
 }

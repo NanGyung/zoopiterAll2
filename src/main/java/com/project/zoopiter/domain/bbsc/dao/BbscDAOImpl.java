@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -121,14 +122,22 @@ public class BbscDAOImpl implements BbscDAO{
    * @return 수정건수
    */
   @Override
-  public int updateByBbscId(Long id, Bbsc bbsc) {
+  public void updateByBbscId(Long id, Bbsc bbsc) {
     StringBuffer sql = new StringBuffer();
     sql.append("update bbsc ");
-    sql.append("set bc_title = :bcTitle, bc_content= :bcContent, pet_type = :petType, bc_public = :bcPublic, bc_udate = systimestamp ");
+    sql.append("set bc_title = :bcTitle, ");
+    sql.append("bc_content= :bcContent, pet_type = :petType, ");
+    sql.append("bc_public = :bcPublic, bc_udate = systimestamp ");
     sql.append("where bbsc_id = :bbscId ");
-    SqlParameterSource param = new BeanPropertySqlParameterSource(bbsc);
 
-    return template.update(sql.toString(), param);
+    SqlParameterSource param = new MapSqlParameterSource()
+        .addValue("bcTitle", bbsc.getBcTitle())
+        .addValue("bcContent", bbsc.getBcContent())
+        .addValue("petType", bbsc.getPetType())
+        .addValue("bcPublic", bbsc.getBcPublic())
+        .addValue("bbscId", id);
+
+    template.update(sql.toString(),param);
   }
 
   /**
@@ -142,9 +151,9 @@ public class BbscDAOImpl implements BbscDAO{
     StringBuffer sql = new StringBuffer();
     sql.append("update bbs  ");
     sql.append("set hit = hit + 1 ");
-    sql.append("where bbs_id = :id ");
-    SqlParameterSource param = new BeanPropertySqlParameterSource(id);
-
+    sql.append("where bbsc_id = :id ");
+//    SqlParameterSource param = new BeanPropertySqlParameterSource(id);
+    Map<String, Long> param = Map.of("id", id);
     return template.update(sql.toString(), param);
   }
 }

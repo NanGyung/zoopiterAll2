@@ -180,6 +180,26 @@ $id.addEventListener('blur', e => {
   return;
 });
 
+//비밀번호 확인 함수
+  const pwCheck_h = (e) => {
+    const input = $pwCheck.value;
+    const inputChk = $pw.value;
+    const lenOfInput = input.length;
+
+    if (lenOfInput != 0) {
+      if (input == inputChk) {
+        $errPw.classList.add('hidden');
+        $errPwCheck.style = 'color : green';
+        $errPwCheck.textContent = '비밀번호가 일치합니다';
+      } else {
+        $errPwCheck.classList.remove('hidden');
+        $errPwCheck.style = 'color : red';
+        $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
+      }
+    }
+    return;
+  };
+
 //비밀번호
 $pw.addEventListener('keydown', e => {
   const input = $pw.value;
@@ -232,6 +252,7 @@ $pw.addEventListener('blur', e => {
     $errPw.textContent = '* 비밀번호는 8~20자 입력 가능합니다.';
   } else {
     $errPw.classList.add('hidden');
+    pwCheck_h(e);
   }
   return;
 });
@@ -244,25 +265,9 @@ $pwCheck.addEventListener('focus', e => {
   }
 });
 
-//비밀번호 확인
-$pwCheck.addEventListener('input', e => {
-  const input = $pwCheck.value;
-  const inputChk = $pw.value;
-  const lenOfInput = input.length;
 
-  if (lenOfInput != 0) {
-    if (input == inputChk) {
-      $errPw.classList.add('hidden');
-      $errPwCheck.style = 'color : green';
-      $errPwCheck.textContent = '비밀번호가 일치합니다';
-    } else {
-      $errPwCheck.classList.remove('hidden');
-      $errPwCheck.style = 'color : red';
-      $errPwCheck.textContent = '비밀번호가 일치하지 않습니다.';
-    }
-  }
-  return;
-});
+//비밀번호 확인
+$pwCheck.addEventListener('input',pwCheck_h);
 
 //비밀번호 확인
 $pwCheck.addEventListener('keydown', e => {

@@ -49,6 +49,29 @@ public class MemberDAOImpl implements MemberDAO {
     return member;
   }
 
+  @Override
+  public Member save2(Member member) {
+    StringBuffer sql = new StringBuffer();
+    sql.append("insert into member( ");
+    sql.append(" user_id, ");
+    sql.append(" user_pw, ");
+    sql.append(" user_nick, ");
+    sql.append(" user_email, ");
+    sql.append(" gubun ");
+    sql.append(") values( ");
+    sql.append(" :userId, ");
+    sql.append(" :userPw, ");
+    sql.append(" :userNick, ");
+    sql.append(" :userEmail, ");
+    sql.append(" 'H0101' ");
+    sql.append(" ) ");
+
+    SqlParameterSource param = new BeanPropertySqlParameterSource(member);
+
+    template.update(sql.toString(),param);
+
+    return member;
+  }
   /**
    * 회원정보수정
    *
@@ -242,30 +265,4 @@ public class MemberDAOImpl implements MemberDAO {
 
     return (result.size() == 1) ? Optional.of(result.get(0)) : Optional.empty();
   }
-
-  /**
-   * 비밀번호 찾기
-   *
-   * @param userEmail  이메일
-   * @param userId 회원아이디
-   * @return boolean
-   */
-  @Override
-  public boolean isExistByEmailAndId(String userEmail, String userId) {
-    boolean isExist = false;
-
-    StringBuffer sql = new StringBuffer();
-    sql.append("select count(*) ");
-    sql.append("  from member ");
-    sql.append("  where user_id = 'ellena0824' and user_email = 'gamza97@gmail.com' ");
-
-    Map<String, String> param = Map.of("email",userEmail,"userId",userId);
-
-    Integer integer = template.queryForObject(sql.toString(), param, Integer.class);
-
-    if(integer == 1) isExist = true;
-
-    return isExist;
-  }
-
 }

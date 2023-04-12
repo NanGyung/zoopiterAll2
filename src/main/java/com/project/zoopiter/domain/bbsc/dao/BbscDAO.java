@@ -43,14 +43,14 @@ public interface BbscDAO {
    * 수정
    * @param id 게시글 번호
    * @param bbsc 수정내용
-   * @return 수정건수
+   * @return
    */
-  int updateByBbscId(Long id, Bbsc bbsc);
+  void updateByBbscId(Long id, Bbsc bbsc);
 
   /**
    * 조회수 증가
    * @param id 게시글 번호
-   * @return 수정건수
+   * @return
    */
   int increaseHitCount(Long id);
 
