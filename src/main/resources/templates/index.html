@@ -52,9 +52,9 @@
           </li>
           <div class="hd__menu__list1__item list1-item4" id="join">
             <th:bolck th:if="${session.isEmpty()}">
-            <li><a href="./member_login.html" th:href="@{/login}">로그인</a></li>
+              <li><a href="./member_login.html" th:href="@{/login}">로그인</a></li>
               <span>|</span>
-            <li><a href="./member_join.html" th:href="@{/members/join}">회원가입</a></li>
+              <li><a href="./member_join.html" th:href="@{/members/join}">회원가입</a></li>
             </th:bolck>
             <th:bolck th:unless="${session.isEmpty()}">
               <span th:text="|(${session.loginMember.userNick})님|"></span>
@@ -284,34 +284,34 @@
           <h3>광고 소개서</h3>
           <button id="closeBtn3">X</button>
         </div>
-          <div class="ft-info3__content">
-            <form action="">
-              <ul>
-                <li>
-                  <label for="hname"><span>*</span>병원명</label>
-                  <input type="text" id="hname">
-                </li>
-                <li>
-                  <label for="name"><span>*</span>담당자명</label>
-                  <input type="text" id="name">
-                </li>
-                <li>
-                  <label for="email"><span>*</span>이메일주소</label>
-                  <input type="email" id="email">
-                </li>
-                <li>
-                  <label for="phone"><span>*</span>연락처</label>
-                  <input type="tel" id="phone">
-                </li>
-                <li>
-                  <label for="adcontent"><span>*</span>광고내용</label>
-                  <textarea name="adcontent" id="adcontent" cols="30" rows="10">
+        <div class="ft-info3__content">
+          <form action="">
+            <ul>
+              <li>
+                <label for="hname"><span>*</span>병원명</label>
+                <input type="text" id="hname">
+              </li>
+              <li>
+                <label for="name"><span>*</span>담당자명</label>
+                <input type="text" id="name">
+              </li>
+              <li>
+                <label for="email"><span>*</span>이메일주소</label>
+                <input type="email" id="email">
+              </li>
+              <li>
+                <label for="phone"><span>*</span>연락처</label>
+                <input type="tel" id="phone">
+              </li>
+              <li>
+                <label for="adcontent"><span>*</span>광고내용</label>
+                <textarea name="adcontent" id="adcontent" cols="30" rows="10">
                   </textarea>
-                </li>
-              </ul>
-              <button id="ftInfo3Btn">제출하기</button>
-            </form>
-          </div>
+              </li>
+            </ul>
+            <button id="ftInfo3Btn">제출하기</button>
+          </form>
+        </div>
       </dialog>
 
       <section class="container__content item1">
@@ -432,5 +432,3 @@
   <!-- footer 개인정보처리방침 모달 구현 -->
   <script src="../js/ft_modal.js"></script>
 </body>
-
-</html>

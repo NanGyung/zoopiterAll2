@@ -33,9 +33,6 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	//메일전송
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
-
 	/* 롬복을 junit에서 사용하고자 할때 반드시 포함 */
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
