@@ -277,10 +277,6 @@ $pwCheck.addEventListener('focus', e => {
 //비밀번호 확인
 $pwCheck.addEventListener('input', pwCheck_h);
 
-
-//비밀번호 확인
-$pwCheck.addEventListener('input', pwCheck_h);
-
 //비밀번호 확인
 $pwCheck.addEventListener('keydown', e => {
   const input = $pwCheck.value;
@@ -389,11 +385,11 @@ $email.addEventListener('blur', e => {
 });
 
 //이메일 인증 인풋 막기
-$emailCheck.addEventListener('keydown', e => {
-  if (e.key == 'Enter') {
-    e.preventDefault();
-  };
-  return;
+$emailCheck.addEventListener('keydown',e=>{
+      if (e.key == 'Enter') {
+        e.preventDefault();
+      };
+      return;
 });
 
 //이메일 인증 체크1
@@ -421,12 +417,12 @@ const emailSendBtn_h = () => {
     .get(url)
     .then(res => res.json())
     .then(emailSend) //res=>chkEmail(res)
-    .then(e => {
-      if ($errEmailCheck.style.color === 'grey') {
-        $emailSendBtn.classList.add('hidden');
-        $emailSendBtn2.classList.remove('hidden');
-      } else {
-        document.getElementById('emailSendBtn').disabled = false;
+    .then(e=>{
+      if($errEmailCheck.style.color === 'grey'){
+            $emailSendBtn.classList.add('hidden');
+            $emailSendBtn2.classList.remove('hidden');
+      }else{
+            document.getElementById('emailSendBtn').disabled = false;
       };
     })
     .catch(console.error); //err=>console.error(err)
@@ -438,7 +434,7 @@ $emailSendBtn.addEventListener('click', e => {
     $errEmailCheck.style = 'color : red';
     $errEmailCheck.textContent = '* 이메일을 양식에 맞게 입력해 주세요';
     e.preventDefault();
-  } else if ($errEmail.style.color === 'green') {
+  } else if($errEmail.style.color === 'green') {
     document.getElementById('email').disabled = true;
     emailSendBtn_h();
   };
@@ -470,14 +466,14 @@ const emailSendBtn_h2 = e => {
     .get(url)
     .then(res => res.json())
     .then(emailSend2) //res=>chkEmail(res)
-    .then(e => {
-      if ($errEmailCheck.textContent == '인증성공') {
-        document.getElementById('emailCheck').disabled = true;
-        document.getElementById('emailSendBtn2').disabled = true;
-      };
+    .then(e=>{
+    if($errEmailCheck.textContent=='인증성공'){
+      document.getElementById('emailCheck').disabled = true;
+      document.getElementById('emailSendBtn2').disabled = true;
+    };
     })
     .catch(console.error); //err=>console.error(err)
-  return;
+    return;
 };
 
 $emailSendBtn2.addEventListener('click', e => {
@@ -504,7 +500,7 @@ const member_h = () => {
     .post(url, payLoad)
     .then(res => res.json())
     .catch(console.error); //err=>console.error(err)
-  return;
+    return;
 };
 
 const $loginBtn = document.getElementById('loginBtn');
