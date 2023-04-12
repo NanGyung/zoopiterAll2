@@ -269,6 +269,10 @@ $pwCheck.addEventListener('focus', e => {
 //비밀번호 확인
 $pwCheck.addEventListener('input',pwCheck_h);
 
+
+//비밀번호 확인
+$pwCheck.addEventListener('input', pwCheck_h);
+
 //비밀번호 확인
 $pwCheck.addEventListener('keydown', e => {
   const input = $pwCheck.value;

@@ -27,6 +27,6 @@ class MailServiceTest {
     str.append("<p>인증번호는" + checkNum + "입니다. 인증을 진행해주세요!</p>");
     str.append("<a href = 'http://localhost/login'>로그인</a>");
     str.append("</html>");
-    mailService.sendMail("ynangyung97@gmail.com","제목",str.toString());
+    mailService.sendMail("ynangyung97@gmail.com","test","test");
   }
 }
