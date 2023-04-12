@@ -28,6 +28,15 @@ public class MemberSVCImpl implements MemberSVC {
   }
 
   /**
+   * @param member 회원정보
+   * @return
+   */
+  @Override
+  public Member save2(Member member) {
+    return memberDAO.save2(member);
+  }
+
+  /**
    * 회원정보수정
    *
    * @param userId 아이디
@@ -128,17 +137,5 @@ public class MemberSVCImpl implements MemberSVC {
   @Override
   public Optional<String> findIdByEmail(String userEmail) {
     return Optional.empty();
-  }
-
-  /**
-   * 비밀번호 찾기
-   *
-   * @param userEmail 이메일
-   * @param userId    아이디
-   * @return
-   */
-  @Override
-  public boolean isExistByEmailAndId(String userEmail, String userId) {
-    return memberDAO.isExistByEmailAndId(userEmail,userId);
   }
 }

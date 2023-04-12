@@ -188,7 +188,7 @@ input:focus {
   width: 100%;
   height: 50px;
   background-color: inherit;
-}   
+}
 
 .findUser__menu--ul {
   display: flex;
@@ -297,7 +297,7 @@ dialog li {
 
 /* 아이디 찾기 버튼 */
 #checkId{
-  width: 100%; 
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--color-main-point);
   background-color: var(--color-main-point);
@@ -448,7 +448,6 @@ dialog li {
 /* 펫오너 가입, 펫병원 가입 버튼 클릭영역 */
 .joinbox a{
   display: inline-block;
-  width: 100%;
 }
 
 .scroll-boxs {
@@ -457,7 +456,7 @@ dialog li {
 }
 
 .scroll-box{
-    height: 28rem; 
+    height: 28rem;
     width: 22rem;
     padding: 1.2em;
     overflow: auto;
@@ -586,11 +585,42 @@ input:focus {
   flex-direction: column;
 }
 
+/*사업자 인증 관련 */
 .item7 .item7__business{
   display: flex;
+  margin-bottom: 10px;
 }
 
-#businessBtn{
+/* 사업자 인증 기본 안내문구 */
+.information.business{
+  margin-bottom: 10px;
+}
+
+.item7__business.hidden{
+  display: none;
+}
+
+.information.business2.hidden{
+  display: none;
+}
+.item7__business.business__left{
+  width: 240px;
+}
+
+.business__left #p_nm,
+.business__left #start_dt,
+.business__left #b_nm{
+  display: block;
+  width: 240px;
+}
+
+.item7__business #businessBtn2 {
+ width: 73.8px;
+}
+
+
+
+.item7__business .businessBtn{
   width: 5rem;
   margin-left: 10px;
   border: 1px solid var(--color-main-point3);
@@ -608,6 +638,10 @@ input:focus {
   margin-top: 10px;
   background-color: var(--color-main-point3);
   font-size: 0.6rem;
+}
+
+.emailSenc.hidden{
+  display:none;
 }
 
 .item6__email{
@@ -639,5 +673,6 @@ input:focus {
   margin: 20px 0;
   font-size: 1.2rem;
 }
+
 
 
