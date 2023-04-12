@@ -109,7 +109,7 @@ DESC UPLOADFILE;
 create table member (
     USER_ID                varchar2(20),   --로긴 아이디
     USER_PW                varchar2(20),   --로긴 비밀번호
-    USER_NICK              varchar2(30),   --별칭
+    USER_NICK              varchar2(60),   --별칭
     USER_EMAIL             varchar2(40),  --이메일
     GUBUN                  varchar2(10) default 'M0101',    --회원구분(병원,일반) 일반회원 관리코드 M0101, 병원회원 관리코드 H0101
     USER_PHOTO             BLOB,           --사진
@@ -143,7 +143,7 @@ commit;
 create table hmember (
     H_ID                   varchar2(20),   --로긴 아이디
     H_PW                   varchar2(20),   --로긴 비밀번호
-    H_NAME                 varchar2(52),   --병원 상호명
+    H_NAME                 varchar2(60),   --병원 상호명
     H_EMAIL                varchar2(40),   --이메일
     H_TEL                  varchar2(30),   --병원 연락처
     H_TIME                 clob,           --진료시간
