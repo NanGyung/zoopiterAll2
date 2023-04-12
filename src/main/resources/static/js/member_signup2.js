@@ -419,7 +419,7 @@ $chkBtn2.addEventListener('click', (e) => {
 //member 내보내기
 const member_h = () => {
   const url = `/api/members/signup2`;
-  const name = "*병원*" + $b_nm.value.replace("(주)", "").replace("주식회사", "");
+  const name = "*병원* " + $b_nm.value.replace("(주)", "").replace("주식회사", "");
   const payLoad = {
     userId: $id.value,
     userPw: $pw.value,
