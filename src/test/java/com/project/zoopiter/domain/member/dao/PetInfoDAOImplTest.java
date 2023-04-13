@@ -106,7 +106,8 @@ class PetInfoDAOImplTest {
   @Order(5)
   @DisplayName("반려동물 목록")
   void findAll() {
-    List<PetInfo> list = petInfoDAO.findAll();
+    String userId = "test1";
+    List<PetInfo> list = petInfoDAO.findAll(userId);
     Assertions.assertThat(list.size()).isGreaterThan(0);
   }
 }

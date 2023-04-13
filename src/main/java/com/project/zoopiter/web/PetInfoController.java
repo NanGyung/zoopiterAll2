@@ -38,7 +38,7 @@ public class PetInfoController {
     return petInfos;
   }
 
-// 등록 pet_reg
+  // 등록 pet_reg
   // 등록양식
   @GetMapping("/petreg")
   public String saveInfo(Model model){
@@ -55,7 +55,7 @@ public class PetInfoController {
       @Valid @ModelAttribute PetSaveForm petSaveForm,
       BindingResult bindingResult,
       RedirectAttributes redirectAttributes
-      ){
+  ){
     log.info("petSaveForm={}",petSaveForm);
     // 데이터 검증
     if (bindingResult.hasErrors()){
@@ -87,8 +87,8 @@ public class PetInfoController {
   // 조회
   @GetMapping("/{id}/detail")
   public String findInfo(
-    @PathVariable("id") Long id,
-    Model model
+      @PathVariable("id") Long id,
+      Model model
   ){
     Optional<PetInfo> findPetInfo = petInfoSVC.findInfo(id);
     PetInfo petInfo = findPetInfo.orElseThrow(() -> new RuntimeException("PetInfo not found for id: " + id));
@@ -111,7 +111,7 @@ public class PetInfoController {
     return "mypage/mypage_pet_detail";
   }
 
-// 수정 pet_modify > 메인으로 이동(보호자정보페이지)
+  // 수정 pet_modify > 메인으로 이동(보호자정보페이지)
 //  int updateInfo (Long PetNum, PetInfo petInfo);
   // 수정양식
   @GetMapping("/{id}/edit")

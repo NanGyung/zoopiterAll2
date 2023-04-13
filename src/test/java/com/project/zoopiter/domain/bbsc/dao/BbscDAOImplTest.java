@@ -23,10 +23,10 @@ class BbscDAOImplTest {
     Bbsc bbsc = new Bbsc();
 
     bbsc.setBcGubun("B0102");
-    bbsc.setBcTitle("테스트제목2");
-    bbsc.setBcContent("테스트본문2");
+    bbsc.setBcTitle("테스트제목3");
+    bbsc.setBcContent("테스트본문3");
     bbsc.setUserNick("회원2");
-    bbsc.setPetType("기타");
+    bbsc.setPetType("강아지");
     bbsc.setBcPublic("Y");
 
     Long saveWrite = bbscDAO.saveWrite(bbsc);

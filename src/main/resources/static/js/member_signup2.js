@@ -440,7 +440,7 @@ $chkBtn2.addEventListener('click', (e) => {
         switch(res.data[0].b_stt_cd){ //납세자 상태
           case "01": //계속사업자
             console.log('계속');
-            $numChk.style = 'color : green';
+            $numChk.setAttribute('style','color : green; opacity: 100;');
             $numChk.textContent = "계속";
             //비활성
             document.getElementById('businessBtn').disabled = true;
