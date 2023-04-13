@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티 작성</title>
+  <!--  리뷰게시판 메인 css -->
+  <link rel="stylesheet" href="../css/board_com-add.css">
+  <!--  폰트 어썸 : 로고 -->
+  <script src="https://kit.fontawesome.com/6631aa96e6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hd-l"></div>
+    <header class="hd">
+      <nav class="hd__menu">
+        <ul class="hd__menu__list1">
+          <li id="logo">
+            <a href="index.html">
+              <i class="fa-solid fa-dog fa-2x"></i>
+              <h3>슬기로운 반려생활</h3>
+            </a>
+          </li>
+          <li class="hd__menu__list1__item list1-item1">
+            <a href="./findBymap.html">펫병원</a>
+            <ul class="hd__menu__list1__item__submenu">
+              <li><a href="./findBymap.html">병원찾기</a></li>
+            </ul>
+          </li>
+          <li class="hd__menu__list1__item list1-item2">
+            <a href="board_all.html" >게시판</a>
+            <ul class="hd__menu__list1__item__submenu">
+              <li><a href="board_review.html">병원후기</a></li>
+              <li><a href="board_com.html">커뮤니티</a></li>
+            </ul>
+          </li>
+          <li class="hd__menu__list1__item list1-item3" id="myPage">
+            <a href="./mypage_main.html">마이페이지</a>
+          </li>
+          <div class="hd__menu__list1__item list1-item4" id="join">
+            <th:block th:if="${session.isEmpty()}">
+              <li><a href="./member_login.html" th:href="@{/login}">로그인</a></li>
+              <span>|</span>
+              <li><a href="./member_join.html" th:href="@{/members/join}">회원가입</a></li>
+            </th:block>
+            <th:block th:unless="${session.isEmpty()}">
+              <span th:text="|(${session.loginMember.userNick})님|"></span>
+              <li><a href="" th:href="@{/logout}">로그아웃</a></li>
+            </th:block>
+          </div>
+        </ul>
+        <a href="#" id="hamburger">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </nav>
+    </header>
+    <div class="hd-r"></div>
+
+    <div class="fg-l"></div>
+
+    <div class="fg-r"></div>
+
+    <div class="mn-l"></div>
+    <main class="container">
+      <div class="sort">
+        <div class="search">
+          <div class="tag-list"></div>
+          <!-- 동물 태그 선택 -->
+          <div class="left">
+            <div class="tag">동물태그</div>
+            <form class="selectBox" name="petTag">
+              <select class="select" name="pet">
+                <option value="default">동물유형</option>
+                <option value="dog">강아지</option>
+                <option value="cat">고양이</option>
+                <option value="small">소동물</option>
+                <option value="other">기타</option>
+              </select>
+              <span class="icoArrow">
+                <i class="fa-solid fa-arrow-down"></i>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메인제목 -->
+      <div class="title-l"></div>
+      <div class="title">
+        <div class="title__name">
+          <div class="main">커뮤니티 글작성</div>
+          <div class="title__inline">
+            <input type="radio" name="cs_open" id="cs_open" value="Y" class="radio" /><span
+              class="ml_10">공개</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="cs_open" id="cs_open" value="N" class="radio" /><span
+              class="ml_10">비공개</span>&nbsp;
+          </div>
+        </div>
+      </div>
+      <div class="title-r"></div>
+
+      <!-- 제목입력창 -->
+      <div class="main-title-l"></div>
+      <div class="main-title">
+        <div class="input">
+          <input type="text" placeholder="제목을 입력해주세요.">
+        </div>
+      </div>
+      <div class="main-title-r"></div>
+
+      <!-- 본문입력창 -->
+      <div class="body-write-l"></div>
+      <div class="body-write">
+        <div class="input">
+          <input type="text" placeholder="본문을 입력해주세요.">
+        </div>
+      </div>
+      <div class="body-write-r"></div>
+
+      <!-- 첨부파일버튼 -->
+      <div class="file-l"></div>
+      <div class="file">
+        <!-- <input type="file" name="FileName"> -->
+        <form name="이 폼의 이름" action="이 데이터들을 받을 파일" method="post" enctype="multipart/form-data">
+          <input type='file' name='' multiple />
+        </form>
+      </div>
+      <div class="file-r"></div>
+
+      <!-- 사진첨부 -->
+      <div class="pic-l"></div>
+      <div class="pic">
+        <div class="pic__file">
+          <!-- <div class="img">
+          <div class="pic__img"><img src="/img/photo.png" alt="">사진첨부</div>
+        </div> -->
+          <div class="file__pic">
+            <div>* 파일은 파일1개당 최대 300mb 이내로 업로드 가능합니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pic-r"></div>
+
+      <!-- 글등록버튼 -->
+      <div class="btn-l"></div>
+      <div class="btn">
+        <div class="detail">
+          <button onclick="location.href='board_com.html'">목록</button>
+        </div>
+        <div class="add">
+          <button onclick="location.href='board_com-detail.html'">등록</button>
+        </div>
+      </div>
+      <div class="btn-r"></div>
+    </main>
+
+    <!-- 푸터 -->
+    <div class="ft-l"></div>
+    <footer class="ft">
+      <div class="ft__buttons f-item1">
+        <a href="index.html">슬기로운 반려생활</a>
+      </div>
+      <div class="ft__mid-area">
+        <div class="ft__buttons f-item2">
+          <a id="ftItem1">개인정보처리방침</a>
+        </div>
+        <div class="ft__buttons f-item3">
+          <a id="ftItem2">이용약관</a>
+        </div>
+        <div class="ft__buttons f-item4">
+          <a id="ftItem3">광고문의</a>
+        </div>
+      </div>
+      <div class="ft__info">
+        <p>슬기로운 반려생활</p>
+        <p>주소 : 울산시 자바 개발구 KH빌딩 5층 502호</p>
+        <p>광고문의 052-123-4567</p>
+      </div>
+      <div class="ft__copy">
+        Copyright© 2023 슬반생.All right reserved. Designed by 슬반생
+      </div>
+    </footer>
+    <!-- 푸터 팝업 -->
+    <!-- 개인정보 약관 -->
+    <dialog id="ft-info1">
+      <div class="ft-info1__title">
+        <h3>개인정보처리방침</h3>
+        <button id="closeBtn1">X</button>
+      </div>
+      <div id="info1Txt">
+        <p>
+          1. 개인정보의 처리 목적 <(주)슬기로운반려생활>(‘www.wisepet.com’이하 ‘와이즈펫’) 은
+            다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적
+            이외의 용도로는 이용하지 않습니다.</br> – 고객 가입의사 확인,
+            고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격
+            유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는
+            서비스의 공급.배송 등 </br></br></br> 2. 개인정보의 처리 및 보유 기간 ①
+            ‘와이즈펫’은 정보주체로부터 개인정보를 수집할 때 동의 받은
+            개인정보 보유․이용기간 또는 법령에 따른 개인정보 보유․이용기간
+            내에서 개인정보를 처리․보유합니다. ② 구체적인 개인정보 처리 및
+            보유 기간은 다음과 같습니다. </br> – 고객 가입 및 관리 :
+            카카오싱크를 통한 회원가입 및 카카오채널을 통한 관리 </br> – 보유
+            기간 : 카카오채널 탈퇴 시, 즉시 삭제 </br> </br> </br> 3. 정보주체와
+            법정대리인의 권리·의무 및 그 행사방법 이용자는
+            개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다. ①
+            정보주체는 ‘와이즈펫’ 에 대해 언제든지 다음 각 호의 개인정보
+            보호 관련 권리를 행사할 수 있습니다. </br>1. 개인정보 열람요구 2.
+            오류 등이 있을 경우 정정 요구 3. 삭제요구 4. 처리정지 요구 4.
+            처리하는 개인정보의 항목 작성 ① ‘와이즈펫’은 다음의 개인정보
+            항목을 처리하고 있습니다. </br> </br> </br>
+            <‘와이즈펫’에서 수집하는 개인정보 항목> ‘와이즈펫’ 회원 가입 및 고객 문의 시, 제공 동의를
+              해주시는 개인정보 수집 항목입니다.</br> </br> </br> ■ 회원 가입 시(회원) –
+              필수항목 : 이름, 이메일, 전화번호, 성별, 연령대 </br> – 선택항목 :
+              생년월일 </br> – 수집목적 : 와이즈펫 회원관리 및 마케팅 이용 </br> –
+              보유기간 : 회원 탈퇴 또는 동의철회 시 지체없이 파기 </br></br></br>■ 고객
+              문의 시(비회원) </br> – 필수항목 : 문의종류, 이름, 휴대폰번호,
+              이메일, 문의사항 </br> – 수집목적 : 고객문의 및 상담요청에 대한
+              회신, 상담을 위한 서비스 이용기록 조회</br> – 보유기간 : 문의 접수
+              후 2년 간 보관 (단, 관계 법령이 정한 시점까지 보존)
+        </p>
+      </div>
+    </dialog>
+    <!-- 이용 약관 -->
+    <dialog id="ft-info3">
+      <div class="ft-info3__title">
+        <h3>광고 소개서</h3>
+        <button id="closeBtn3">X</button>
+      </div>
+      <div class="ft-info3__content">
+        <form action="">
+          <ul>
+            <li>
+              <label for="hname"><span>*</span>병원명</label>
+              <input type="text" id="hname">
+            </li>
+            <li>
+              <label for="name"><span>*</span>담당자명</label>
+              <input type="text" id="name">
+            </li>
+            <li>
+              <label for="email"><span>*</span>이메일주소</label>
+              <input type="email" id="email">
+            </li>
+            <li>
+              <label for="phone"><span>*</span>연락처</label>
+              <input type="tel" id="phone">
+            </li>
+            <li>
+              <label for="adcontent"><span>*</span>광고내용</label>
+              <textarea name="adcontent" id="adcontent" cols="30" rows="10">
+                                </textarea>
+            </li>
+          </ul>
+          <button id="ftInfo3Btn">제출하기</button>
+        </form>
+      </div>
+    </dialog>
+    <div class="ft-r"></div>
+  </div>
+  <!-- 펫 태그 셀렉트  -->
+  <script src="../js/board_selectPet.js"></script>
+  <script>
+    const open = () => {
+      document.querySelector(".modal").classList.remove("hidden");
+    }
+
+    const close = () => {
+      document.querySelector(".modal").classList.add("hidden");
+    }
+
+    document.querySelector(".openBtn").addEventListener("click", open);
+    document.querySelector(".closeBtn1").addEventListener("click", close);
+    document.querySelector(".closeBtn2").addEventListener("click", close);
+    document.querySelector(".bg").addEventListener("click", close);
+  </script>
+</body>
+
+</html>

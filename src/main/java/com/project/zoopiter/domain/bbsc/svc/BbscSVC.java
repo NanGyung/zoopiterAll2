@@ -1,6 +1,7 @@
 package com.project.zoopiter.domain.bbsc.svc;
 
 import com.project.zoopiter.domain.entity.Bbsc;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -8,9 +9,17 @@ public interface BbscSVC {
   /**
    * 글 작성
    * @param bbsc
-   * @return 글번호
+   * @return 게시글번호
    */
   Long saveWrite(Bbsc bbsc);
+
+  /**
+   * 글 작성 - 첨부파일 있는경우
+   * @param bbsc
+   * @param files 첨부파일
+   * @return 게시글번호
+   */
+  Long saveWriteFile(Bbsc bbsc, List<MultipartFile> files);
 
   /**
    * 목록

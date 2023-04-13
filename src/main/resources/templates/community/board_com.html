@@ -36,7 +36,7 @@
         <li class="hd__menu__list1__item list1-item2">
           <a href="#">게시판</a>
           <ul class="hd__menu__list1__item__submenu">
-            <li><a href="./board_community.html">커뮤니티</a></li>
+            <li><a href="./board_community.html" th:href="/bbsc/list">커뮤니티</a></li>
             <li><a href="./board_review.html">병원후기</a></li>
           </ul>
         </li>
@@ -44,15 +44,15 @@
           <a href="./mypage_main.html" th:href="@{/mypage/pet}">마이페이지</a>
         </li>
         <div class="hd__menu__list1__item list1-item4" id="join">
-          <th:bolck th:if="${session.isEmpty()}">
+          <th:block th:if="${session.isEmpty()}">
             <li><a href="./member_login.html" th:href="@{/login}">로그인</a></li>
             <span>|</span>
             <li><a href="./member_join.html" th:href="@{/members/join}">회원가입</a></li>
-          </th:bolck>
-          <th:bolck th:unless="${session.isEmpty()}">
+          </th:block>
+          <th:block th:unless="${session.isEmpty()}">
             <span th:text="|(${session.loginMember.userNick})님|"></span>
             <li><a href="" th:href="@{/logout}">로그아웃</a></li>
-          </th:bolck>
+          </th:block>
         </div>
       </ul>
       <a href="#" id="hamburger">

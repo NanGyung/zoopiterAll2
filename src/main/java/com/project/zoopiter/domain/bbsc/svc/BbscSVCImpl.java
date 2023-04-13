@@ -1,10 +1,12 @@
 package com.project.zoopiter.domain.bbsc.svc;
 
 import com.project.zoopiter.domain.bbsc.dao.BbscDAO;
+import com.project.zoopiter.domain.common.file.svc.UploadFileSVC;
 import com.project.zoopiter.domain.entity.Bbsc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,15 +16,36 @@ import java.util.List;
 public class BbscSVCImpl implements BbscSVC{
 
   private final BbscDAO bbscDAO;
+  private final UploadFileSVC uploadFileSVC;
+
   /**
    * 글 작성
    *
    * @param bbsc
-   * @return 글번호
+   * @return 게시글번호
    */
   @Override
   public Long saveWrite(Bbsc bbsc) {
     return bbscDAO.saveWrite(bbsc);
+  }
+
+  /**
+   * 글 작성 - 첨부파일 있는경우
+   *
+   * @param bbsc
+   * @param files 첨부파일
+   * @return 게시글번호
+   */
+  @Override
+  public Long saveWriteFile(Bbsc bbsc, List<MultipartFile> files) {
+
+    // 1) 글 저장
+    Long bbscId = saveWrite(bbsc);
+
+    // 2) 첨부파일 저장
+    uploadFileSVC.addFiles(bbsc.getBcGubun(),bbscId,files);
+
+    return bbscId;
   }
 
   /**
